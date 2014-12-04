@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Warmer-out</title>
+<script type="text/javascript">
+var socket;
+var echoStart = new Date().getTime();
+window.onload =function() {
+    
+    var host = "ws://comprom.at:8765/fanera/ws/warmer_out/";
+    socket = new WebSocket(host);
+
+    socket.onopen = function() {
+        document.getElementById('state').innerHTML= 'Connected';
+        socket.send(JSON.stringify({type: 'echo'}));
+    }
+
+    socket.onmessage = function(msg){
+        obj = JSON.parse(msg.data);
+
+        if(obj.type == 'realtime_data')
+        {
+            document.getElementById('width_span').innerHTML=obj.current_list.width;
+            document.getElementById('height_span').innerHTML=obj.current_list.height;
+            document.getElementById('time_span').innerHTML=obj.current_list.timestamp;
+        }
+        else if(obj.type == 'echo')
+        {
+            var delay = new Date().getTime() - echoStart;
+            document.getElementById('pp_delay').innerHTML=delay;
+        }
+    }
+
+    socket.onclose = function(){
+        document.getElementById('state').innerHTML = 'Closed';
+    }           
+};
+</script>
+
+</head>
+<body>
+<div id="wrapper">
+    <div id="container">
+        <h1>Warmer-out</h1>
+        <br>
+        <br>
+        <br>
+        <span>Ping-pong delay: </span><span id="pp_delay">?</span>
+        <br>
+        <br>
+        <br>
+        <span>Socket state: </span><span id="state">?</span>
+        <br>
+        <span>Width: </span><span id="width_span">?</span>
+        <br>
+        <span>Height: </span><span id="height_span">?</span>
+        <br>
+        <span>Time: </span><span id="time_span">?</span>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>VK online data</title>
+<link rel="stylesheet" href="jquery.jqplot.min.css" />
+<style type="text/css">
+body { font-family: Helvetica, HelveticaNeue, Verdana, Arial; }
+div.navigate span { border: 1px #FFF solid; padding: 3px; cursor: pointer; }
+.active { background-color: #D8E1FE; border: 1px #0066FF dashed !important; border-radius: 3px; padding: 3px; }
+.chart { height: 300px; text-align: center; vertical-align: middle; }
+</style>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="data.js"></script>
+<script type="text/javascript" src="plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="plugins/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$.ajax("../includes/monitoring/getData2.php",
+	{
+		data: {
+			machine_id: 1,
+			field_ids: 1,
+			mx: 1,
+			date_begin: 1366005600,
+			date_end: 1366092000,
+			operation: "sum",
+			value_scale: 1,
+			divide: 1
+		},
+		dataType: "json"
+	}, 
+	function(data) {
+		$('#chart').empty();
+	var plot1 = $.jqplot('chart', data, {
+		title:'Тест нового getData',
+		axes:{
+			xaxis:{
+			  renderer:$.jqplot.DateAxisRenderer,
+			  tickOptions:{
+				formatString:'%A\n%#d&nbsp;%b&nbsp;%H:%M'
+			  } 
+			},
+			yaxis:{
+			  	tickOptions:{
+					formatString:'%.0f'
+				},
+				min: 0
+			}
+		},
+		series:[{showMarker: true}],
+		highlighter: {
+		  show: true
+		},
+		cursor: {
+		  show: false,
+		  zoom: true
+		}
+	});
+	});
+});
+
+
+function plotit(plotData) {
+	$('#chart').empty();
+	var plot1 = $.jqplot('chart', plotData, {
+		title:'Тест нового getData',
+		axes:{
+			xaxis:{
+			  renderer:$.jqplot.DateAxisRenderer,
+			  tickOptions:{
+				formatString:'%A\n%#d&nbsp;%b&nbsp;%H:%M'
+			  } 
+			},
+			yaxis:{
+			  	tickOptions:{
+					formatString:'%.0f'
+				},
+				min: 0
+			}
+		},
+		series:[{showMarker: true}],
+		highlighter: {
+		  show: true
+		},
+		cursor: {
+		  show: false,
+		  zoom: true
+		}
+	});
+};
+</script>
+</head>
+
+<body>
+<a href='javascript:plotit([["2013-04-15 6:05:00",1162],["2013-04-15 6:10:00",628]])'>График!</a>
+<div id="chart" class="chart">
+  <p>График:</p>
+</div>
+
+</body>
+</html>

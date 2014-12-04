@@ -1,0 +1,357 @@
+function getSummary(plotVariant, startDate, endDate, operation) {
+	field = $('#setPlotOpts_1').find('#plotField').attr( 'value' );
+	//plotVariant = plotVariants[mach][field];
+	//startDate = $('#setPlotOpts_1').find('input#dateBegin').val();
+	//endDate = $('#setPlotOpts_1').find('input#dateEnd').val();
+	if (!operation) operation = plotVariant.operation;
+	
+	var dataVal;
+	$.ajax({
+		url: 'includes/monitoring/getSummary.php',
+		type: 'GET',
+		async: true,
+		data: {
+			machine: plotVariant.machine,
+			field: plotVariant.field,
+			start: startDate,
+			end: endDate,
+			operation: operation
+		},
+		success: function(data) {
+			dataVal = data;
+		},
+		error: function() {
+			alert("Ошибка загрузки сводки из базы");
+			$('#loading').hide();
+		}
+	});
+	return dataVal;
+}
+function prepareSummary() {
+	$('#loading').show();
+	$('#sumVal_1').html('<img src="img/loading.gif" width="40" height="40" />');
+	$('#sumVal_2').html('<img src="img/loading.gif" width="40" height="40" />');
+	$('#sumVal_3').html('<img src="img/loading.gif" width="40" height="40" />');
+	$('#sumVal_4').html('<img src="img/loading.gif" width="40" height="40" />');
+	$('#sumVal_5').html('<img src="img/loading.gif" width="40" height="40" />');
+	$('#sumVal_6').html('<img src="img/loading.gif" width="40" height="40" />');
+	$('#sumVal_7').html('<img src="img/loading.gif" width="40" height="40" />');
+	$('#sumVal_lists').html('<img src="img/loading.gif" width="40" height="40" />');
+	
+	
+	$(document).ready(function(){
+		$('#summaryCantainer').show();
+	});
+	
+	startDate = $('input#dateBegin').val();
+	endDate = $('input#dateEnd').val();
+	
+	if (mach == 0 || mach == 1) { // лущение или ножницы
+		$('.summaryVal').empty();
+		drawSummary( // объём поданного кряжа
+			document.getElementById('sumVal_1'),
+			'blocks',
+			getSummary(plotVariants[0][1], startDate, endDate),
+			plotVariants[0][1].title,
+			plotVariants[0][1].units
+		);
+		drawSummary( // объём карандаша
+			document.getElementById('sumVal_2'),
+			'blocks',
+			getSummary(plotVariants[0][4], startDate, endDate),
+			plotVariants[0][4].title,
+			plotVariants[0][4].units
+		);
+		
+		
+		var cut_1 = getSummary(plotVariants[1][1], startDate, endDate);
+		var cut_2 = getSummary(plotVariants[1][2], startDate, endDate);
+		var cut_3 = getSummary(plotVariants[1][3], startDate, endDate);
+		var wasEdited = '';
+		if ( (cut_1.indexOf('*')>-1) || (cut_2.indexOf('*')>-1) || (cut_3.indexOf('*')>-1) ) wasEdited = '*';
+		var cutterTotal = (	parseFloat(cut_1) +	parseFloat(cut_2) +	parseFloat(cut_3) ).toFixed(2);
+		
+		drawSummary( // выход с ножниц
+			document.getElementById('sumVal_3'),
+			'blocks',
+			cutterTotal + wasEdited,
+			'Выход с ножниц',
+			plotVariants[1][1].units
+		);
+		
+		var inp = parseFloat(getSummary(plotVariants[0][1], startDate, endDate));
+		if (inp != 0) { exitPercent = (cutterTotal / inp * 100).toFixed(2) }
+		else { exitPercent = 0 };
+		
+		
+		drawSummary( // % выхода/входа
+			document.getElementById('sumVal_4'),
+			'blocks',
+			exitPercent,
+			'% выхода/входа',
+			'%'
+		);
+		
+		drawSummary( // Средний диаметр чурака
+			document.getElementById('sumVal_5'),
+			'blocks',
+			getSummary(plotVariants[0][5], startDate, endDate),
+			'Средний диаметр чурака',
+			plotVariants[0][5].units
+		);
+		
+		drawSummary( // Средний диаметр карандаша
+			document.getElementById('sumVal_6'),
+			'blocks',
+			getSummary(plotVariants[0][6], startDate, endDate),
+			'Средний диаметр карандаша',
+			plotVariants[0][6].units
+		);
+		drawSummary( // Количество чураков
+			document.getElementById('sumVal_7'),
+			'blocks',
+			getSummary(plotVariants[0][7], startDate, endDate),
+			plotVariants[0][7].title,
+			plotVariants[0][7].units
+		);
+		
+		drawSummaryListsByFormats('sumVal_lists', startDate, endDate);
+		
+		
+	} else if (mach == 2) { // Котельная
+		$('.summaryVal').empty();
+		drawSummary( // 
+			document.getElementById('sumVal_1'),
+			'blocks',
+			getSummary(plotVariants[2][0], startDate, endDate),
+			plotVariants[2][0].title,
+			plotVariants[2][0].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_2'),
+			'blocks',
+			getSummary(plotVariants[2][1], startDate, endDate),
+			plotVariants[2][1].title,
+			plotVariants[2][1].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_3'),
+			'blocks',
+			getSummary(plotVariants[2][2], startDate, endDate),
+			plotVariants[2][2].title,
+			plotVariants[2][2].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_4'),
+			'blocks',
+			getSummary(plotVariants[2][3], startDate, endDate),
+			plotVariants[2][3].title,
+			plotVariants[2][3].units
+		);
+	} else if (mach == 3) { // Сушилка
+		$('#sumVal_6').empty();
+		$('#sumVal_7').empty();
+		$('#sumVal_lists').empty();
+		drawSummary( // 
+			document.getElementById('sumVal_1'),
+			'blocks',
+			getSummary(plotVariants[3][1], startDate, endDate),
+			'Средняя скорость подачи',
+			plotVariants[3][1].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_2'),
+			'blocks',
+			getSummary(plotVariants[3][2], startDate, endDate),
+			'Средняя скорость движения листов',
+			plotVariants[3][2].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_3'),
+			'blocks',
+			getSummary(plotVariants[3][3], startDate, endDate, 'avg'),
+			'Средняя заполненность стола',
+			plotVariants[3][3].units
+		);
+		
+		drawSummary( // 
+			document.getElementById('sumVal_4'),
+			'blocks',
+			getSummary(plotVariants[3][4], startDate, endDate, 'avg'),
+			'В среднем шпона в минуту',
+			plotVariants[3][4].units
+		);
+		
+		var dayWrapper = moment(startDate, "DD.MM.YYYY HH:mm");
+		startDateMySQL = dayWrapper.format("YYYY-MM-DD  HH:mm");
+		var warmerTotalSquare = getSummary(plotVariants[3][4], startDate, endDate, 'sum');
+		warmerTotalSquare = parseInt(warmerTotalSquare);
+		$.get('getRauteThickness.php', { date: startDateMySQL },
+		function(data) {
+			drawSummary( // 
+				document.getElementById('sumVal_5'),
+				'blocks',
+				Math.round(warmerTotalSquare * data * 100) / 100,
+				'Подано сырого шпона',
+				'м<sup>3</sup>'
+			);
+		});
+	} else if (mach == 4) { // Опиловка
+		$('.summaryVal').empty();
+		drawSummary( // 
+			document.getElementById('sumVal_1'),
+			'blocks',
+			getSummary(plotVariants[4][1], startDate, endDate),
+			plotVariants[4][1].title,
+			plotVariants[4][1].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_2'),
+			'blocks',
+			getSummary(plotVariants[4][2], startDate, endDate),
+			plotVariants[4][2].title,
+			plotVariants[4][2].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_3'),
+			'blocks',
+			getSummary(plotVariants[4][4], startDate, endDate),
+			plotVariants[4][4].title,
+			plotVariants[4][4].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_4'),
+			'blocks',
+			getSummary(plotVariants[4][5], startDate, endDate),
+			plotVariants[4][5].title,
+			plotVariants[4][5].units
+		);
+	} else if (mach == 5) { // Шлифовка
+		$('.summaryVal').empty();
+		
+		var bin_1 = getSummary(plotVariants[5][1], startDate, endDate);
+		var bin_2 = getSummary(plotVariants[5][2], startDate, endDate);
+		var bin_3 = getSummary(plotVariants[5][3], startDate, endDate);
+		var wasEdited = '';
+		if ( (bin_1.indexOf('*')>-1) || (bin_2.indexOf('*')>-1) || (bin_3.indexOf('*')>-1) ) wasEdited = '*';
+		var grindingTotal = (	parseFloat(bin_1) +	parseFloat(bin_2) +	parseFloat(bin_3) ).toFixed(2);
+		
+		drawSummary(
+			document.getElementById('sumVal_1'),
+			'blocks',
+			grindingTotal + wasEdited,
+			'Всего ошлифовано',
+			plotVariants[5][1].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_2'),
+			'blocks',
+			getSummary(plotVariants[5][4], startDate, endDate),
+			plotVariants[5][4].title,
+			plotVariants[5][4].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_3'),
+			'blocks',
+			getSummary(plotVariants[5][5], startDate, endDate),
+			plotVariants[5][5].title,
+			plotVariants[5][5].units
+		);
+	} else if (mach == 6) { // Сращивание
+		$('.summaryVal').empty();
+		var totalVal = ( parseFloat(getSummary(plotVariants[6][2], startDate, endDate)) + parseFloat(getSummary(plotVariants[6][13], startDate, endDate)) ).toFixed(2);
+		drawSummary( // 
+			document.getElementById('sumVal_1'),
+			'blocks',
+			totalVal,
+			'Суммарный объём',
+			plotVariants[6][2].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_2'),
+			'blocks',
+			getSummary(plotVariants[6][2], startDate, endDate),
+			plotVariants[6][2].title,
+			plotVariants[6][2].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_3'),
+			'blocks',
+			getSummary(plotVariants[6][3], startDate, endDate),
+			plotVariants[6][3].title,
+			plotVariants[6][3].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_4'),
+			'blocks',
+			getSummary(plotVariants[6][4], startDate, endDate),
+			plotVariants[6][4].title,
+			plotVariants[6][4].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_5'),
+			'blocks',
+			getSummary(plotVariants[6][5], startDate, endDate),
+			plotVariants[6][5].title,
+			plotVariants[6][5].units
+		);
+		
+		drawSummary( // 
+			document.getElementById('sumVal_6'),
+			'blocks',
+			getSummary(plotVariants[6][13], startDate, endDate),
+			plotVariants[6][13].title,
+			plotVariants[6][13].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_7'),
+			'blocks',
+			getSummary(plotVariants[6][14], startDate, endDate),
+			plotVariants[6][14].title,
+			plotVariants[6][14].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_8'),
+			'blocks',
+			getSummary(plotVariants[6][15], startDate, endDate),
+			plotVariants[6][15].title,
+			plotVariants[6][15].units
+		);
+		drawSummary( // 
+			document.getElementById('sumVal_9'),
+			'blocks',
+			getSummary(plotVariants[6][16], startDate, endDate),
+			plotVariants[6][16].title,
+			plotVariants[6][16].units
+		);
+	} else if (mach == 7) { // Распиловка
+		$('.summaryVal').empty();
+		drawSummary( // 
+			document.getElementById('sumVal_1'),
+			'blocks',
+			getSummary(plotVariants[7][0], startDate, endDate, 'count'),
+			plotVariants[7][0].title,
+			plotVariants[7][0].units
+		);
+		
+		summary = [{
+			plot_variant: '7,0',
+			date_begin: startDate,
+			date_end: endDate,
+			title: plotVariants[7][0].title,
+			units: plotVariants[7][0].units
+		},
+		{
+			plot_variant: '7,0',
+			date_begin: startDate,
+			date_end: endDate,
+			title: plotVariants[7][0].title,
+			units: plotVariants[7][0].units
+		}];
+		generateSummary(summary);
+		
+		drawSummarySawFormats('sumVal_lists', startDate, endDate);
+	}
+	
+	$('#loading').hide();
+}

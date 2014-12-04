@@ -1,0 +1,30 @@
+[06-Dec-2013 00:40:43 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:40:43 America/Denver] PHP Notice:  Undefined variable: sql in /home2/plystatr/public_html/v2/tests/https/login.php on line 32
+[06-Dec-2013 00:40:43 America/Denver] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, null given in /home2/plystatr/public_html/v2/tests/https/login.php on line 32
+[06-Dec-2013 00:40:49 America/Denver] PHP Notice:  Undefined variable: sql in /home2/plystatr/public_html/v2/tests/https/login.php on line 32
+[06-Dec-2013 00:40:49 America/Denver] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, null given in /home2/plystatr/public_html/v2/tests/https/login.php on line 32
+[06-Dec-2013 00:40:52 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:40:53 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:42:32 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:43:47 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:47:00 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:47:16 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:47:50 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:47:51 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:47:53 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:47:54 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:47:55 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:48:07 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:48:08 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:48:09 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:48:24 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:48:50 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:48:51 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 00:48:54 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 02:21:01 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 02:22:03 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 02:22:25 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 02:22:59 America/Denver] PHP Notice:  A session had already been started - ignoring session_start() in /home2/plystatr/public_html/v2/tests/https/login.php on line 5
+[06-Dec-2013 02:23:56 America/Denver] PHP Notice:  Undefined index: s_user_id in /home2/plystatr/public_html/v2/tests/https/login.php on line 8
+[06-Dec-2013 02:24:47 America/Denver] PHP Notice:  Undefined index: s_user_id in /home2/plystatr/public_html/v2/tests/https/login.php on line 8
+[06-Dec-2013 02:24:53 America/Denver] PHP Notice:  Undefined index: s_user_id in /home2/plystatr/public_html/v2/tests/https/login.php on line 8

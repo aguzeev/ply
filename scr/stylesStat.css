@@ -1,0 +1,87 @@
+body {
+	padding: 0; margin: 0;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+}
+table#statCommonTable {
+}
+table#statCommonTable thead th {
+	background-color: #CEC9CF;
+	color: #000;
+	font-weight: normal;
+	padding: 3px 0;
+}
+table#statCommonTable tbody td {
+	border-bottom: 1px solid #EAEAEC;
+	padding: 3px 0 2px 0;
+}
+table#statCommonTable.hoverable tbody tr:hover {
+	background-color: #EAEAEC;
+}
+table#statCommonTable tfoot td {
+	border-top: 1px #585976 solid;
+	background-color: #B9BFE1;
+	padding: 8px 0;
+	font-weight: bold;
+}
+table#statCommonTable td.columnTotal {
+	background-color: #B9BFE1;
+}
+table#statCommonTable .columnIndent {
+	padding-left: 10px !important;
+}
+table#statCommonTable td.columnOperations {
+	font-size: 11px;
+	color: #808290;
+}
+table#statCommonTable.hoverable tbody tr:hover td.columnTotal {
+	background-color: #919DD9;
+}
+.bordR { border-right: 2px #585976 solid; }
+.bordL { border-left: 2px #585976 solid; }
+.borderB { border-bottom: 2px #585976 solid; }
+.borderT { border-top: 2px #585976 solid; }
+
+
+
+div#naviContainer {
+	margin: 5px auto 15px auto;
+	padding: 10px;
+	width: 98%;
+	border: none;
+	text-align: left;
+	vertical-align: top;
+	position: relative;
+}
+div#billNavigation {
+	
+	background-color: #B9BFE1;
+	background-image: url(img/menu-bg.png);
+	margin: 0 auto 0 auto;
+	padding: 10px 0;
+	text-align: center;
+}
+div#billNavigation a:link, div#billNavigation a:visited {
+	padding: 10px 10px;
+	color: #323237;
+	border-right: 1px #ececee solid;
+	border-left: 1px #ececee solid;
+	text-decoration: none;
+}
+div#billNavigation a:hover {
+	background-image: url(img/menu-bg-hover.png);
+	border-right: 1px #787878 solid;
+	border-left: 1px #787878 solid;
+}
+div#content {
+	width: 100%;
+	margin: 25px auto 15px auto;
+}
+span.allowedOperationsDef {
+	font-size: 11px;
+	color: #878787;
+}
+.dialogTip {
+	font-size: 11px;
+	color: #707070;
+}

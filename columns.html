@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Трехколоночный макет на CSS с одинаковой высотой колонок</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="stylesStat.css" />
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font: 13px Tahoma, Arial, sans-serif;
+	width: 100%;
+}
+p {
+	padding: 10px 15px;
+}
+a {
+	margin: 0 15px;
+	display: block;
+}
+a span {
+	display: none;
+}
+a:hover {
+	display: block;
+	position: relative;
+}
+a:hover span {
+	display: block;
+	margin-top: 300px;
+}
+#header a {
+	display: inline;
+	margin: 0;
+}
+#wrapper {
+	/* для фиксированной ширины */
+	width: 900px;
+	margin: 0 auto;/* для "резиновой" ширины
+  width: expression((documentElement.clientWidth||document.body.clientWidth)<995?'1000px':'');
+  min-width: 1000px; */
+}
+#header {
+	height: 70px;
+	background: #DFDFDF;
+	text-align: center;
+}
+#container {
+	width: 100%;
+	background: #D5FFD5; /* фон основной колонки */
+}
+* html #container {
+	height: 1%;
+}
+#container:after {
+	/* закрываем плавающие блоки */
+	content: '.';
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	line-height: 0;
+}
+#sub-container {
+	float: left;
+	border-right: 200px solid #BFF2FF; /* фон правого сайдбара */
+	/* для фиксированной ширины */
+	width: 700px;/* для "резиновой" ширины
+	width: 100%;
+	margin-left: -200px; */
+}
+#wrpr {
+/* для "резиновой" ширины
+  margin-left: 200px; */
+}
+#content {
+	width: 100%;
+	float: left;
+}
+#text {
+	border-right: 200px solid #FFF2BF; /* фон левого сайдбара */
+	padding-bottom: 15px;
+}
+#left {
+	float: left;
+	width: 200px;
+	margin-left: -200px;
+	background: #FFF2BF; /* фон левого сайдбара */
+	position: relative;
+	padding-bottom: 15px;
+}
+#right {
+	float: left;
+	width: 200px;
+	margin-left: -400px;
+	background: #BFF2FF; /* фон правого сайдбара */
+	border-left: 200px solid #FFF2BF; /* фон левого сайдбара */
+	padding-bottom: 15px;
+}
+#footer {
+	height: 70px;
+	background: #FFCACA;
+}
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+  <div id="container">
+    <div id="sub-container">
+      <div id="wrpr">
+        <div id="content">
+        
+        
+          <div id="text">
+            <div class='timeBoardDay' id='day_0_op_6'>
+	Нет данных</div>
+	</div>
+          <!-- end #text --> 
+        </div>
+        <!-- end #content -->
+        
+        <div id="left">
+          <div class='timeBoardDay' id='day_0_op_6'>
+	Нет данных</div>
+	</div>
+      </div>
+      
+      
+      <!-- end #wrpr --> 
+    </div>
+    <!-- end #sub-container -->
+    
+    <div id="right">
+      <div class='timeBoardDay' id='day_0_op_6'>
+	Нет данных<br />
+Нет данных<br />
+Нет данных</div>
+	</div>
+  </div>
+  <!-- end #container -->
+  
+</div>
+<!-- #wrapper -->
+
+</body>
+</html>

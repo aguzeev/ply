@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Выплаты по заводу</title>
+
+<link rel="stylesheet" href="stylesStat.css" />
+<link rel="stylesheet" href="js/css/jquery-ui-1.8.16.custom.css" />
+<link rel="stylesheet" href="chosen.css" />
+
+<script language="javascript" src="js/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="js/jquery.ui.datepicker-ru.js"></script>
+<script language="javascript" src="js/chosen.jquery.js"></script>
+
+<script language="javascript">
+$(document).ready(function() {
+	$('#billScale').chosen();
+
+	$('#dateBegin').datetimepicker({
+		hourGrid: 4,
+		minuteGrid: 10,
+		onClose: function(dateText, inst) {
+			var endDateTextBox = $('#dateEnd');
+			if (endDateTextBox.val() != '') {
+				var testStartDate = new Date(dateText);
+				var testEndDate = new Date(endDateTextBox.val());
+				if (testStartDate > testEndDate)
+					endDateTextBox.val(dateText);
+			}
+			else {
+				endDateTextBox.val(dateText);
+			}
+		},
+		onSelect: function (selectedDateTime){
+			var start = $(this).datetimepicker('getDate');
+			$('#dateEnd').datetimepicker('option', 'minDate', new Date(start.getTime()));
+		}
+	});
+	$('#dateEnd').datetimepicker({
+		hourGrid: 4,
+		minuteGrid: 10,
+		onClose: function(dateText, inst) {
+			var startDateTextBox = $('#dateBegin');
+			if (startDateTextBox.val() != '') {
+				var testStartDate = new Date(startDateTextBox.val());
+				var testEndDate = new Date(dateText);
+				if (testStartDate > testEndDate)
+					startDateTextBox.val(dateText);
+			}
+			else {
+				startDateTextBox.val(dateText);
+			}
+		},
+		onSelect: function (selectedDateTime){
+			var end = $(this).datetimepicker('getDate');
+			$('#dateBegin').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+		}
+	});
+});
+
+</script>
+</head>
+
+<body>
+<div id="naviContainer">
+    <div id="billNavigation">
+    <h2 style="padding: 10px 0 0 0" align="center">Ведомость выплат</h2>
+      <select data-placeholder="Выберите подразделение" style="width: 300px;" name="billScale" id="billScale" size="1" tabindex="1">
+        <option></option>
+        <option value="1">——— Все подразделения ———</option>
+        <option value="1">Управление</option>
+        <option value="2">Отдел кадров</option>
+        <option value="3">Производство фанеры</option>
+        <option value="3">– Лесопиление</option>
+        <option value="3">– ИТР и вспомогательные</option>
+        <option value="3">– Новый пресс</option>
+        
+      </select>
+      за период
+      <input type="text" name="dateBegin" id="dateBegin" tabindex="2" />
+    — 
+    <input type="text" name="dateEnd" id="dateEnd" tabindex="3" />
+    </div>
+
+    <div id="content">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3" id="statCommonTable" class="hoverable">
+        <thead>
+          <tr>
+            <th width="22%" rowspan="2" align="left" valign="bottom" class="columnName borderB">ФИО</th>
+            <th width="12%" rowspan="2" align="left" valign="bottom" class="borderB">Подразделение</th>
+            <th width="13%" rowspan="2" align="left" valign="bottom" class="borderB">Уачсток</th>
+            <th width="12%" rowspan="2" align="left" valign="bottom" class="borderB">Должность</th>
+            <th width="8%" rowspan="2" align="center" valign="bottom" class="borderB">Oтработанных часов за период</th>
+            <th colspan="5" align="center" valign="bottom">Выплаты за период</th>
+          </tr>
+          <tr>
+            <th width="6%" align="center" valign="bottom" class="borderB">Оклад</th>
+            <th width="6%" align="center" valign="bottom" class="borderB">Базовая часть</th>
+            <th width="6%" align="center" valign="bottom" class="borderB">Печерменная часть</th>
+            <th width="8%" align="center" valign="bottom" class="borderB">За выходные<br />дни</th>
+            <th width="7%" align="center" valign="bottom" class="borderB">Итого</th>
+          </tr>
+      </thead>
+          <tfoot>
+              <tr>
+                <td colspan="6" align="right">Всего:</td>
+                <td align="center">322500</td>
+                <td align="center">45000</td>
+                <td align="center">0</td>
+                <td align="center">367500</td>
+            </tr>
+      </tfoot>
+        <tbody>
+          <tr>
+            <td class="columnName">Сабиров Сергей Константинович</td>
+            <td><a href="total_dept.html">Управление</a></td>
+            <td>Основной</td>
+            <td>Оператор ЭВМ</td>
+            <td align="center">38</td>
+            <td align="center">25000</td>
+            <td align="center">23750</td>
+            <td align="center">7500</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">31250</td>
+          </tr>
+          <tr>
+            <td class="columnName">Панков Николай Александрович</td>
+            <td><a href="total_dept.html">Управление</a></td>
+            <td>Основной</td>
+            <td>Оператор Супер ЭВМ</td>
+            <td align="center">40</td>
+            <td align="center">30000</td>
+            <td align="center">30000</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">30000</td>
+          </tr>
+          <tr>
+            <td class="columnName">Сабиров Сергей Константинович</td>
+            <td>Отдел кадров</td>
+            <td>Основной</td>
+            <td>Оператор ЭВМ</td>
+            <td align="center">38</td>
+            <td align="center">25000</td>
+            <td align="center">23750</td>
+            <td align="center">7500</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">31250</td>
+          </tr>
+          <tr>
+            <td class="columnName">Панков Николай Александрович</td>
+            <td>Отдел кадров</td>
+            <td>Основной</td>
+            <td>Оператор Супер ЭВМ</td>
+            <td align="center">40</td>
+            <td align="center">30000</td>
+            <td align="center">30000</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">30000</td>
+          </tr>
+          <tr>
+            <td class="columnName">Сабиров Сергей Константинович</td>
+            <td>ПСХ</td>
+            <td>Основной</td>
+            <td>Оператор ЭВМ</td>
+            <td align="center">38</td>
+            <td align="center">25000</td>
+            <td align="center">23750</td>
+            <td align="center">7500</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">31250</td>
+          </tr>
+          <tr>
+            <td class="columnName">Панков Николай Александрович</td>
+            <td>ПСХ</td>
+            <td>Основной</td>
+            <td>Оператор Супер ЭВМ</td>
+            <td align="center">40</td>
+            <td align="center">30000</td>
+            <td align="center">30000</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">30000</td>
+          </tr>
+          <tr>
+            <td class="columnName">Сабиров Сергей Константинович</td>
+            <td>Отдел сбыта</td>
+            <td>Основной</td>
+            <td>Оператор ЭВМ</td>
+            <td align="center">38</td>
+            <td align="center">25000</td>
+            <td align="center">23750</td>
+            <td align="center">7500</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">31250</td>
+          </tr>
+          <tr>
+            <td class="columnName">Панков Николай Александрович</td>
+            <td>Отдел сбыта</td>
+            <td>Основной</td>
+            <td>Оператор Супер ЭВМ</td>
+            <td align="center">40</td>
+            <td align="center">30000</td>
+            <td align="center">30000</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">30000</td>
+          </tr>
+          <tr>
+            <td class="columnName">Сабиров Сергей Константинович</td>
+            <td>Производство фанеры</td>
+            <td>Лесопиление</td>
+            <td>Оператор ЭВМ</td>
+            <td align="center">38</td>
+            <td align="center">25000</td>
+            <td align="center">23750</td>
+            <td align="center">7500</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">31250</td>
+          </tr>
+          <tr>
+            <td class="columnName">Панков Николай Александрович</td>
+            <td>Производство фанеры</td>
+            <td>ИТР и вспомогательные</td>
+            <td>Оператор Супер ЭВМ</td>
+            <td align="center">40</td>
+            <td align="center">30000</td>
+            <td align="center">30000</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">30000</td>
+          </tr>
+          <tr>
+            <td class="columnName">Сабиров Сергей Константинович</td>
+            <td>Производство фанеры</td>
+            <td>Линия сращивания</td>
+            <td>Оператор ЭВМ</td>
+            <td align="center">38</td>
+            <td align="center">25000</td>
+            <td align="center">23750</td>
+            <td align="center">7500</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">31250</td>
+          </tr>
+          <tr>
+            <td class="columnName">Панков Николай Александрович</td>
+            <td>Производство фанеры</td>
+            <td>Сортировка шпона</td>
+            <td>Оператор Супер ЭВМ</td>
+            <td align="center">40</td>
+            <td align="center">30000</td>
+            <td align="center">30000</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center" class="columnTotal">30000</td>
+          </tr>
+    
+        </tbody>
+    </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Сотрудники предприятия</title>
+<script language="javascript" src="js/jquery.min.js"></script>
+<script language="javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+<script language="javascript" src="js/chosen.jquery.js"></script>
+<link rel="stylesheet" href="chosen.css" />
+<style type="text/css">
+body {
+	padding: 10px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+}
+table#statCommonTable {
+}
+table#statCommonTable thead th {
+	background-color: #CEC9CF;
+	color: #000;
+	font-weight: bold;
+	padding: 3px 0;
+}
+table#statCommonTable tbody td {
+	border-bottom: 1px solid #EAEAEC;
+	padding: 8px 0 8px 0;
+}
+table#statCommonTable tbody tr:hover {
+	background-color: #EAEAEC;
+}
+table#statCommonTable tfoot td {
+	border-top: 1px #585976 solid;
+	background-color: #B9BFE1;
+	padding: 8px 0;
+	font-weight: bold;
+}
+table#statCommonTable td.columnTotal {
+	background-color: #B9BFE1;
+}
+table#statCommonTable .columnName {
+	padding-left: 10px !important;
+}
+table#statCommonTable td.columnOperations {
+	font-size: 11px;
+	color: #808290;
+}
+table#statCommonTable tbody tr:hover td.columnTotal {
+	background-color: #919DD9;
+}
+.bordR { border-right: 2px #585976 solid; }
+.bordL { border-left: 2px #585976 solid; }
+.borderB { border-bottom: 2px #585976 solid; }
+.borderT { border-top: 2px #585976 solid; }
+
+div#billNavigation {
+	width: 100%;
+	background-color: #B9BFE1;
+	margin: 0 0 15px 0;
+}
+</style>
+<script language="javascript">
+$(document).ready(function() {
+	$('#billScale').chosen();
+});
+</script>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="3" id="statCommonTable">
+	<thead>
+      <tr>
+        <th width="20%" align="left" valign="bottom" class="columnName borderB">ФИО</td>
+        <th width="15%" align="left" valign="bottom" class="borderB">Подразделение/<br />
+          участок
+        <th width="13%" align="left" valign="bottom" class="borderB">Должность</td>
+        <th width="12%" align="left" valign="bottom" class="borderB">Допустимые операции
+        <th width="6%" align="center" valign="bottom" class="borderB">Дата приёма на работу
+        <th width="6%" align="center" valign="bottom" class="borderB">Оклад</td>
+        <th width="6%" align="center" valign="bottom" class="borderB">Базовая часть</td>
+        <th width="8%" align="center" valign="bottom" class="borderB">Переменная часть
+          </td>
+      <th width="14%" align="left" valign="bottom" class="borderB">Условие для переменной части</tr>
+  </thead>
+      <tfoot>
+  </tfoot>
+    <tbody>
+      <tr>
+        <td class="columnName">Сабиров Сергей Константинович</td>
+        <td>Управление</td>
+        <td>Оператор ЭВМ</td>
+        <td class="columnOperations">
+        	<span>Дробление отходов</span><br />
+			<span>Сращивание шпона</span><br />
+	        <span>Лущение</span>
+        </td>
+        <td align="center">11.04.2011</td>
+        <td align="center">25000</td>
+        <td align="center">23750</td>
+        <td align="center">7500</td>
+        <td>Выполнение плана</td>
+      </tr>
+      <tr>
+        <td class="columnName">Панков Николай Александрович</td>
+        <td>Управление</td>
+        <td>Оператор Супер ЭВМ</td>
+        <td class="columnOperations">
+        	<span>Сортировка шпона (ручная)</span><br />
+			<span>Опиловка фанеры ФК, ФСФ</span>
+        </td>
+        <td align="center">10.01.2012</td>
+        <td align="center">30000</td>
+        <td align="center">30000</td>
+        <td align="center">0</td>
+        <td>Производство 1000 м<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td class="columnName">Сабиров Сергей Константинович</td>
+        <td>Отдел кадров</td>
+        <td>Токарь-фрезеровщик</td>
+        <td class="columnOperations"><span>Дробление отходов</span><br />
+          <span>Сращивание шпона</span><br />
+          <span>Лущение</span></td>
+        <td align="center">15.07.2011</td>
+        <td align="center">25000</td>
+        <td align="center">23750</td>
+        <td align="center">7500</td>
+        <td>Выпуск 3000 м<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td class="columnName">Панков Николай Александрович</td>
+        <td>Отдел кадров</td>
+        <td>Слесарь-ремонтник</td>
+        <td class="columnOperations"><span>Сортировка шпона (ручная)</span><br />
+          <span>Опиловка фанеры ФК, ФСФ</span></td>
+        <td align="center">23.07.2010</td>
+        <td align="center">30000</td>
+        <td align="center">30000</td>
+        <td align="center">0</td>
+        <td>Если нет нарушений</td>
+      </tr>
+      <tr>
+        <td class="columnName">Сабиров Сергей Константинович</td>
+        <td>ПСХ</td>
+        <td>Водитель Автобуса</td>
+        <td class="columnOperations"><span>Дробление отходов</span><br />
+          <span>Сращивание шпона</span><br />
+          <span>Лущение</span></td>
+        <td align="center">15.08.2009</td>
+        <td align="center">25000</td>
+        <td align="center">23750</td>
+        <td align="center">7500</td>
+        <td>На поперечки 35+40%</td>
+      </tr>
+      <tr>
+        <td class="columnName">Панков Николай Александрович</td>
+        <td>ПСХ</td>
+        <td>Оператор котла «Каблиц»</td>
+        <td class="columnOperations"><span>Сортировка шпона (ручная)</span><br />
+          <span>Опиловка фанеры ФК, ФСФ</span></td>
+        <td align="center">16.02.2011</td>
+        <td align="center">30000</td>
+        <td align="center">30000</td>
+        <td align="center">0</td>
+        <td>На полоску 500 и 300 мм 135+40%</td>
+      </tr>
+      <tr>
+        <td class="columnName">Сабиров Сергей Константинович</td>
+        <td>Отдел сбыта</td>
+        <td>Оператор ЭВМ</td>
+        <td class="columnOperations"><span>Дробление отходов</span><br />
+          <span>Сращивание шпона</span><br />
+          <span>Лущение</span></td>
+        <td align="center">11.04.2011</td>
+        <td align="center">25000</td>
+        <td align="center">23750</td>
+        <td align="center">7500</td>
+        <td>Выполнение плана</td>
+      </tr>
+      <tr>
+        <td class="columnName">Панков Николай Александрович</td>
+        <td>Отдел сбыта</td>
+        <td>Оператор Супер ЭВМ</td>
+        <td class="columnOperations"><span>Сортировка шпона (ручная)</span><br />
+          <span>Опиловка фанеры ФК, ФСФ</span></td>
+        <td align="center">10.01.2012</td>
+        <td align="center">30000</td>
+        <td align="center">30000</td>
+        <td align="center">0</td>
+        <td>Производство 1000 м<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td class="columnName">Сабиров Сергей Константинович</td>
+        <td>Производство фанеры</td>
+        <td>Оператор ЭВМ</td>
+        <td class="columnOperations"><span>Дробление отходов</span><br />
+          <span>Сращивание шпона</span><br />
+          <span>Лущение</span></td>
+        <td align="center">15.07.2011</td>
+        <td align="center">25000</td>
+        <td align="center">23750</td>
+        <td align="center">7500</td>
+        <td>Выпуск 3000 м<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td class="columnName">Панков Николай Александрович</td>
+        <td>Производство фанеры</td>
+        <td>Оператор Супер ЭВМ</td>
+        <td class="columnOperations"><span>Сортировка шпона (ручная)</span><br />
+          <span>Опиловка фанеры ФК, ФСФ</span></td>
+        <td align="center">23.07.2010</td>
+        <td align="center">30000</td>
+        <td align="center">30000</td>
+        <td align="center">0</td>
+        <td>Если нет нарушений</td>
+      </tr>
+      <tr>
+        <td class="columnName">Сабиров Сергей Константинович</td>
+        <td>Производство фанеры</td>
+        <td>Оператор ЭВМ</td>
+        <td class="columnOperations"><span>Дробление отходов</span><br />
+          <span>Сращивание шпона</span><br />
+          <span>Лущение</span></td>
+        <td align="center">15.08.2009</td>
+        <td align="center">25000</td>
+        <td align="center">23750</td>
+        <td align="center">7500</td>
+        <td>На поперечки 35+40%</td>
+      </tr>
+      <tr>
+        <td class="columnName">Панков Николай Александрович</td>
+        <td>Производство фанеры</td>
+        <td>Оператор Супер ЭВМ</td>
+        <td class="columnOperations"><span>Сортировка шпона (ручная)</span><br />
+          <span>Опиловка фанеры ФК, ФСФ</span></td>
+        <td align="center">16.02.2011</td>
+        <td align="center">30000</td>
+        <td align="center">30000</td>
+        <td align="center">0</td>
+        <td>На полоску 500 и 300 мм 135+40%</td>
+      </tr>
+
+    </tbody>
+</table>
+</body>
+</html>

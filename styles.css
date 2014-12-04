@@ -1,0 +1,109 @@
+﻿html, body { margin: 0; padding: 0; }
+body { font-family: Tahoma, Geneva, sans-serif; font-size: 90%; }
+.contentInATable {
+	background-color: #FFF;
+	margin: 16px auto 0 auto;
+	/*border-left: 1px #FC0 solid;
+	border-top: 1px #FC0 solid;
+	border-bottom: 1px #FC0 solid;*/
+}
+.contentInATable td {
+	border-right: 2px #171946 solid;
+	padding: 2px 5px;
+	overflow: hidden;
+}
+.contentInATable td.tdRightEdge {
+	border-right: none !important
+}
+.contentInATable tr:hover {
+	background-color: #FF8;
+}
+.contentInATable tr.tableHeader td, .contentInATable tr.tableHeader:hover {
+	background-color: #9ACEF1;
+	border-bottom: 2px #171946 solid;
+	border-right: 2px #171946 dotted;
+	font-weight: bold;
+	padding: 5px;
+}
+table.editBar {
+	float: right;
+	visibility: hidden;
+}
+table.editBar td {
+	border: none !important;
+}
+.addButton {
+	height: 30px;
+	background-color: #390;
+	border: #FFF double;
+	border-radius: 5px;
+	color: #FFF;
+	margin: 5px;
+}
+#loginFormContainer {
+	margin: 20% auto;
+	width: 250px;
+	border: 1px #F0F0F0 solid;
+	border-radius: 0;
+	text-align: center;
+	padding: 20px 10px 10px 10px;
+	font-family:
+	Tahoma, Geneva, sans-serif;
+	color: #335A9A;
+	font-size: 14px;
+	background-color: #F5F5F5;
+}
+#loginMessage {
+	background-color: #FDDCD7;
+	margin: 0 0 15px 0;
+	padding:5px;
+	border-bottom: 2px solid #EFB39C;
+	display: none;
+}
+#loginMessageP {
+	margin: 0 10px;
+	color: #555;
+	font-size: 12px;
+}
+#loginFormContainer .btnSubmit {
+	background-color: #CCC;
+	border: double #FFF;
+	color: #555;
+	margin-top: 10px;
+	height: 25px;
+}
+
+.curl {
+	position: relative;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+		-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+ 		-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+}
+.curl:before, .curl:after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 70%;
+    max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
+    height: 55%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+		-moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+ 		-webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: skew(-15deg) rotate(-6deg);
+		-webkit-transform: skew(-15deg) rotate(-6deg);
+		-moz-transform: skew(-15deg) rotate(-6deg);
+		-ms-transform: skew(-15deg) rotate(-6deg);
+		-o-transform: skew(-15deg) rotate(-6deg);         
+}
+   
+.curl:after {
+    left: auto;
+    right: 10px;
+    transform: skew(15deg) rotate(6deg);
+		-webkit-transform: skew(15deg) rotate(6deg);
+		-moz-transform: skew(15deg) rotate(6deg);
+		-ms-transform: skew(15deg) rotate(6deg);
+		-o-transform: skew(15deg) rotate(6deg);          
+}

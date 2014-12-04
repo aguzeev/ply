@@ -1,0 +1,131 @@
+div.timeBoardNav input, div.timeBoardNav select {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14px;
+	border-radius: 0;
+}
+
+div.timeBoardNav select {
+	padding: 3px;
+}
+label.onlineBox { position: relative; top: -5px; }
+div.timeBoardNav p.under, div.timeBoardNav span.under {
+	font-size: 12px;
+	margin: 5px 0 5px 0;
+}
+
+div#graphs {
+	display: inline-block;
+	width: 100%;
+	padding: 0;
+}
+
+div#chart1 {
+	margin: 10px;
+	width: 95%;
+}
+
+div#summary {
+	display: none;
+	background-color: #D4E2EC;
+	padding: 5px 10px 5px 10px;
+	margin: 5px 0 5px 0;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+div#summary p {
+	margin: 0;
+	padding: 0;
+}
+
+div#summaryCantainer {
+	display: none;
+	background-color: #e8ebf6;
+	width: 98%;
+	margin: 15px 1% 0 1%;
+	padding: 10px 0 10px 0;
+	text-align: left;
+	border-bottom: 1px #335A9A dotted;
+	border-top: 1px #335A9A dotted;
+	position: relative;
+	min-height: 50px;
+	vertical-align: middle;
+	font-family:  OfficinaSans, Verdana, Geneva, sans-serif;
+}
+
+div.summaryVal {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 10px 0 0;
+	text-align: center;
+	margin: 10px 15px 0 15px;
+	/*border: 1px #FFF solid;*/
+	min-width: 100px;
+}
+p.summaryHeader {
+	font-size: 16px;
+	margin: 0;
+}
+p.summaryValue {
+	font-size: 27px;
+	margin: 5px;
+}
+
+sup, sub {height: 0;	line-height: 1;	vertical-align: baseline; vertical-align: bottom; position: relative;}
+sup {bottom: 1ex;}
+sub {top: .5ex;}
+
+.summaryListsHeader {
+	font-family:  OfficinaSans, Verdana, Geneva, sans-serif;
+	font-size: 20px;;
+	margin: 0 30px 0 0;
+	padding: 0 0 5px 0;
+	display: inline-block;
+	vertical-align: top;
+}
+.summaryLists {
+	font-family:  OfficinaSans, Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	display: inline-block;
+}
+div.uptime {
+	font-family:  "Tahoma", "Geneva", sans-serif;;
+	font-size: 12px;
+	color: #000;
+	margin: 7px 0 0 0;
+}
+
+div#loading {
+	display: none;
+	position: absolute;
+	top: 0; left: 0;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	width:100%;
+	height: 100%;	
+}
+
+div.semiopacity {
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 998;
+	width:100%;
+	height: 100%;
+	background-color: #EAE1F0;
+	FILTER:PROGID:DXIMAGETRANSFORM.MICROSOFT.ALPHA(OPACITY=60);
+	-MOZ-OPACITY:0.45;
+	-KHTML-OPACITY:0.45;
+	OPACITY:0.45;
+}
+
+.hasTip {
+	border-bottom: 1px #000 dotted;
+	cursor: help;
+}
+#profilingResult {
+	font-size: 12px;
+}
+
+.plotMachine, .plotField { width: 250px; }
+.timeBoardNavInner .chzn-search { display: none; }

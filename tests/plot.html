@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jqplot tests</title>
+<link rel="stylesheet" type="text/css" hrf="jqplot/jquery.jqplot.min.css" />
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jqplot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.meterGaugeRenderer.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.pieRenderer.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.pointLabels.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="jqplot/plugins/jqplot.canvasOverlay.min.js"></script>
+
+
+<style type="text/css">
+body, html { font-family: "Myriad Pro"; font-size: 90%; }
+</style>
+
+</head>
+
+<body>
+<script type="text/javascript">
+$(document).ready(function(){
+    var s1 = [450, 550, 510, 500, 450, 550, 510, 500, 450, 550, 510, 500];
+    var s2 = [420, 480, 480, 480, 430, 450, 380, 460, 460, 430, 450, 380];
+    var s3 = [430, 450, 380, 460, 350, 450, 550, 430, 450, 380, 460, 480];
+    // Can specify a custom tick Array.
+    // Ticks should match up one for each y value (category) in the series.
+    var ticks = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+
+	plot1 = $.jqplot('chart1', [s1], {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticks
+			},
+			yaxis: {
+				pad: 1.2,
+				min: 300
+			}
+		},
+		highlighter: { show: false }
+	});
+});
+</script>
+<div id="chart1" style="margin: 50px; width: 800px; height: 200px;"></div>
+</body>
+</html>

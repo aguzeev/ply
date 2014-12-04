@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Testing Moment.js</title>
+<script language="javascript" src="moment.min.js"></script>
+</head>
+
+<body>
+<div id="timer"></div>
+
+<script language="javascript">
+	var day = new Date(2011, 9, 16);
+	var dayWrapper = moment("01.05.2012", "DD.MM.YYYY");
+	
+	document.getElementById('timer').innerHTML = dayWrapper.format("DD.MM.YYYY");
+</script>
+
+</body>
+</html>

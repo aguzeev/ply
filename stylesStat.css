@@ -1,0 +1,488 @@
+body {
+	padding: 0; margin: 0;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+}
+input {
+	height: 18px;
+	padding: 3px;
+}
+table#statCommonTable {
+}
+table#statCommonTable thead th {
+	background-color: #CEC9CF;
+	color: #000;
+	font-weight: normal;
+	padding: 3px 0;
+}
+table#statCommonTable tbody td {
+	border-bottom: 1px solid #EAEAEC;
+	padding: 3px 0 2px 0;
+}
+table#statCommonTable.hoverable tbody tr:hover {
+	background-color: #EAEAEC;
+}
+table#statCommonTable tfoot td {
+	border-top: 1px #585976 solid;
+	background-color: #B9BFE1;
+	padding: 8px 0;
+	font-weight: bold;
+}
+table#statCommonTable td.columnTotal {
+	background-color: #B9BFE1;
+}
+table#statCommonTable .columnIndent {
+	padding-left: 10px !important;
+}
+table#statCommonTable tr.notActive, table#statCommonTable tr.notActive span  {
+	color: #F55;
+}
+table#statCommonTable td.columnOperations {
+	font-size: 11px;
+	color: #808290;
+}
+table#statCommonTable.hoverable tbody tr:hover td.columnTotal {
+	background-color: #919DD9;
+}
+table#statCommonTable tr.alreadyUsedRates { /* Уже использовавшиеся тарифы в таблице */
+	color: #A0A0A0;
+}
+table#statCommonTable tr.futureRates { /* Будущие тарифы в таблице */
+	color: #2FB32F;
+}
+table#statCommonTable tr.activeRates { /* Активные в данный момент тарифы в таблице */
+	background-color: #D7FED3;
+}
+table#statCommonTable td.rateStatus { /* Статус тарифа — активный/в архиве/будущий */
+	font-size: 11px;
+}
+.bordR { border-right: 2px #585976 solid; }
+.bordL { border-left: 2px #585976 solid; }
+.borderB { border-bottom: 2px #585976 solid; }
+.borderT { border-top: 2px #585976 solid; }
+
+table.editPermissions td { /* Таблица редактирования прав доступа в модуле «пользователи» */
+	font-size: 11px;
+	height: 22px;
+}
+table.editPermissions td.permitionSelect span { /* Выбор прав доступа в модуле «пользователи» */
+	padding: 2px 2px;
+	border: none;
+	margin-right: -1px;
+	cursor: pointer;
+	background-image: url(img/perm-default.png);
+}
+table.editPermissions td.permitionSelect span.noAccess { /* Доступа нет */
+	border-radius: 3px;
+}
+table.editPermissions td.permitionSelect span.read { /* Доступ только на просмотр */
+	border-left: 1px #B0B0B0 solid;
+}
+table.editPermissions td.permitionSelect span.write { /* Доступ на редактирование */
+	border-left: 1px #B0B0B0 solid;
+	margin-left: -1px;
+}
+div.displayPermissionsList { /* Отображение перечня прав доступа на главной странице модуля «пользователи» */
+	display: inline-block;
+	font-size: 11px;
+	color: #707070;
+	padding: 2px 0;
+	margin: 0 5px 2px 0;
+	border: 1px #A0A0A0 solid;
+	border-radius: 3px;
+}
+div.displayPermissionsList span { /* Элемент перечня прав доступа на главной странице модуля «пользователи» */
+	padding: 2px 3px;
+}
+
+div#naviContainer {
+	margin: 5px auto 15px auto;
+	padding: 10px;
+	width: 98%;
+	border: none;
+	text-align: left;
+	vertical-align: top;
+	position: relative;
+}
+div#billNavigation {
+	background-color: #B9BFE1;
+	background-image: url(img/menu-bg.png);
+	margin: 0 auto 0 auto;
+	padding: 0 0;
+	text-align: center;
+	position: relative;
+}
+div#naviContainer .updates { display: inline-block; width: 20px; position: absolute; right: 0; top: 0; margin: 10px 10px; height: 24px; }
+div#naviContainer .updates img { cursor: pointer; }
+div#naviContainer .updates .updatesCounter { position: absolute; top: -7px; right: -7px; background: #F00; border: 1px #FFFFFF solid; color: #ffffff; font-size: 9px; width: 12px; height: 12px; border-radius: 8px; cursor: pointer; }
+div#naviContainer .updatesList { width: 250px; text-align: left; font-size: 12px; background-color: #FAFAFA; color: 808080; padding: 5px 10px; right: 0; top: 45px; position: absolute; border-radius: 3px; display: none; border: 2px #D0D0D0 solid; z-index: 10000 }
+div#naviContainer .updatesList:before { width: 0px; position: absolute; content: ''; top: -12px; right: 8px; height: 0px; border-style: solid;
+border-width: 0 12px 12px 12px; border-color: transparent transparent #D0D0D0 transparent; }
+/*
+div#billNavigation a:link, div#billNavigation a:visited {
+	padding: 10px 10px;
+	color: #323237;
+	border-right: 1px #ececee solid;
+	border-left: 1px #ececee solid;
+	text-decoration: none;
+}
+div#billNavigation a:hover {
+	background-image: url(img/menu-bg-hover.png);
+	border-right: 1px #787878 solid;
+	border-left: 1px #787878 solid;
+}
+div#billNavigation a.active {
+	background-image: url(img/menu-bg-hover.png);
+}
+*/
+
+
+
+div#billNavigation ul { padding: 0; margin: 0; }
+div#billNavigation ul a:link, div#billNavigation a:visited, div#billNavigation ul span { color: #323237; text-decoration: none; padding: 10px 10px; }
+div#billNavigation li {
+	display: inline-block;
+	padding: 10px 10px;
+	color: #323237;
+	border-right: 1px #ececee solid;
+	border-left: 1px #ececee solid;
+	text-decoration: none;
+	position: relative;
+}
+div#billNavigation li:hover, div#billNavigation li.activeLi {
+	background-image: url(img/menu-bg-hover.png);
+	border-right: 1px #787878 solid;
+	border-left: 1px #787878 solid;
+}
+div#billNavigation ul ul, div#billNavigation ul table {
+	position: absolute;
+	top: 33px;
+	left: -1px;
+	min-width: 120px;
+	display: none;
+	background-color: #707070;
+	filter:alpha(opacity=90);
+    -moz-opacity: 0.9;
+    -khtml-opacity: 0.9;
+    opacity: 0.9;
+	z-index: 99999;
+	text-align: left;
+	border: none;
+}
+div#billNavigation ul table ul {
+	filter:alpha(opacity=100);
+    -moz-opacity: 1.0;
+    -khtml-opacity: 1.0;
+    opacity: 1.0;
+}
+div#billNavigation ul ul li {
+	display: block;
+	border: none;
+	color: #FFFFFF;
+}
+div#billNavigation ul ul li.updatable {
+	background: url(img/loading_small.gif) 90% 50% no-repeat;
+}
+div#billNavigation li:hover ul, div#billNavigation li:hover table {
+	display: block;
+}
+div#billNavigation ul ul li:hover {
+	background-color: #A0A0A0;
+	background-image: none;
+	border: none;
+}
+div#billNavigation ul ul a:link, div#billNavigation ul ul a:visited { color: #FFFFFF !important; padding: 10px 0; }
+div#billNavigation ul ul#monitoring li {
+	border-left: 5px #707070 solid;
+}
+span.allowedOperationsDef {
+	font-size: 11px;
+	color: #878787;
+	margin: 0 10px 0 0;
+}
+.dialogTip {
+	font-size: 11px;
+	color: #707070;
+}
+span.asButton, a.asButton:link, a.asButton:visited { /* текстовый блок в виде кнопки */
+	padding: 3px 5px;
+	margin: 7px 2px;
+	background-color: #FBFBFB;
+	border: #8F9F81 1px solid;
+	border-radius: 5px;
+	display: inline-block;
+	font-size: 14px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+}
+span.asDateNavButton, a.asDateNavButton:link, a.asDateNavButton:visited { /* текстовый блок в виде кнопки */
+	padding: 2px 5px;
+	margin: 7px 2px;
+	width: 35px;
+	background-color: #FBFBFB;
+	border: #8F9F81 1px solid;
+	border-radius: 5px;
+	display: inline-block;
+	font-size: 14px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+}
+span.asSmallButton, a.asSmallButton:link, a.asSmallButton:visited { /* текстовый блок в виде кнопки поменьше */
+	padding: 2px 3px;
+	margin: 3px 2px;
+	background-color: #FBFBFB;
+	border: #8F9F81 1px solid;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 10px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+}
+span.asButtonRed, a.asButtonRed:link, a.asButtonRed:visited {
+	padding: 3px 5px;
+	margin: 7px 2px;
+	background-color: #FBD8D2;
+	border: #AC130F 1px solid;
+	border-radius: 5px;
+	display: inline-block;
+	font-size: 14px;
+	cursor: pointer;
+}
+.asButtonRed:hover {
+	border: #AC130F 2px solid;
+	padding: 2px 4px;
+}
+p.lastSync { text-align: right; margin: 30px 20px 10px 20px; color: #AEAEAE; }
+p.supportEmail { text-align: right; margin: 30px 20px 10px 20px; color: #AEAEAE; }
+p.supportEmail a:link, p.supportEmail a:visited { color: #A0A0E0; }
+p.updateDate { margin-left: 50px; text-indent: -5px; position: relative; }
+p.updateDate span { color: #B5B5B5; position: absolute; left: -45px; }
+
+
+
+/*********** timeBoard ***********/
+.timeBoardNavInner { /* внутренний плавающий блок навигации по табелю */
+	font-size: 12px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 10px;
+	text-align: left;
+}
+.timeBoardNav { /* блок навигации по табелю */
+	width: 98%;
+	text-align: center;
+	background-color: #E8E8EA;
+	padding: 5px 0;
+	margin: -15px auto 0 auto;
+}
+.timeBoardNavInner input,.timeBoardNavInner select {
+	font-size: 14px;
+	margin: 6px 0 0 0;
+}
+.timeBoardNav a:link, .timeBoardNav a:visited {
+	color: #333333;
+}
+#timeBoarNavDate { /* выбор даты в блоке навигации по табелю */
+	text-align: center;
+	width: 90px;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	border-bottom: 1px dashed;
+	cursor: pointer;
+	font-size: 16px;
+	color: #00A;
+	background-color: transparent;
+}
+#timeBoarNavMonth {
+}
+.timeBoarEditPeriod { /* поля выбора даты или времени в существующих записях в табеле */
+	text-align: center;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	border-bottom: 1px dashed;
+	cursor: pointer;
+	font-size: 12px !important;
+	color: #00A;
+	background-color: transparent;
+	width: 60px !important;
+}
+.timeBoarDate { /* прочие поля выбора даты или времени в табеле */
+	text-align: center;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	border-bottom: 1px dashed;
+	cursor: pointer;
+	font-size: 16px !important;
+	color: #00A;
+	background-color: transparent;
+}
+.timeBoardOperContainer { /* таблица для группировки по операциям в табеле */
+	width: 90%;
+	margin: 0 auto 0 auto;
+}
+.timeBoardOperContainer table {
+	border-bottom: 1px solid #D5D5D5;
+}
+.timeBoardOperContainer td {
+	vertical-align: top;
+
+}
+.timeBoardOperTitle { /* контейнер для названия операции в табеле */
+	width: 25%;
+	margin: 0;
+	font-weight: bold;
+	background-color: #FFFFFF;
+	border-left: none !important;
+}
+.timeBoardDay { /* ячейка для отображения одного дня в табеле */
+	width: 25%;
+	background-color: #FFFFFF;
+	vertical-align: top;
+}
+.timeBoardDayOdd {
+	background-color: #FFFFFF;
+}
+.timeBoardDay:hover {
+	background-color: #F2F2F2;
+}
+.timeBoardPeriod { /* горизонтальный контейнер для одного периода внутри дня */
+	width: 100%;
+	display: inline-block;
+	margin: 0 0 5px 0;
+}
+.timeBoardTimeColumn { /* контейнер для метки времени внутри контейнера периода */
+	width: 20%;
+	float: left;
+	background-color: #E2EDFE;
+	display: inline-block;
+	margin: 0 -1px 0 0;
+	padding: 1px 2px;
+	border: 1px solid #ADC8FA;
+	border-top: 1px solid #ADC8FA;
+	border-radius: 2px;
+	border-top-right-radius: 0;
+}
+.timeBoardNamesColumn { /* контейнер для имён сотрудников внутри контейнера периода */
+	width: 70%;
+	/*float: right;*/
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 0;
+	padding: 1px 2px;
+	border: 1px solid #ADC8FA;
+	border-top: 1px solid #ADC8FA;
+	border-radius: 2px;
+	border-top-left-radius: 0;
+}
+
+.timeBoardHeaderContainer { /* заголовок табеля */
+	width: 90%;
+	border: none;
+	margin: 15px auto 15px auto;
+}
+.timeBoardHeaderDay { /* ячейка с датой в заголовке табеля */
+	width: 25%;
+	float: left;
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	height: 32px;
+	background-color: #F5F5F5;
+}
+.timeBoardHeaderNavi { /* стрелки перехода в заголовке табеля */
+	position: absolute;
+}
+.clear {
+	clear: both;
+	font-size: 0;
+	overflow: hidden;
+}
+.editTimeboardCellDialogLabel { /* подпись к select в диалоге редактирования ячейки табеля */
+	font-size: 14px;
+	width: 100px;
+	display: inline-block;
+	vertical-align: top;
+}
+.editTimeboardCellDialogInput { /* select в диалоге редактирования ячейки табеля */
+	width: 350px;
+}
+.timeboardListBlock { /* контейнер для select и подписи в диалоге редактирования ячейки табеля */
+	width: 100%;
+	margin: 0 0 15px 0;
+}
+.removeImg { /* изображение для удаления записи в табеле */
+	display: inline-block;
+	vertical-align: top;
+	margin: 7px 0 0 10px;
+}
+.editTiming { /* контейнер для скрытия полей времени в диалоге редактирования табеля */
+}
+.smallLink, a.smallLink:link, a.smallLink:visited { /* кнопка «уточнить время» */
+	font-size: 11px;
+	text-decoration: none;
+	border-bottom: 1px dashed;
+	width: 80px;
+	text-align: center;
+	cursor: pointer;
+}
+.prevDayWarning { /* предупреждение об отнесении периода к предыдущим суткам */
+	color: #900;
+	font-size: 12px;
+}
+.productionCelContainer { /* контейнер для полей ввода объёма и перечня сотрудников, участвовавших в работе */
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+	max-width: 400px;
+}
+
+
+
+/********************* начисления **********************/
+table.accural {
+	text-align: center;
+	margin: 10px auto;
+	min-width: 98%;
+}
+table.accural td { /* обычные ячейки */
+	border-left: 1px #585976 solid;
+}
+table.accural th { /* заголовок таблицы начислений */
+	min-width: 30px;
+	border-bottom: 2px #585976 solid;
+}
+table.accural td:hover { /* заголовок таблицы начислений */
+	background-color: #CACACA;
+	cursor: pointer;
+}
+table.accural td.leftColumn { /* заголовок таблицы начислений */
+	text-align: left;
+	border-left: none;
+	word-wrap: normal;
+}
+div#accuralDetails { /* Диалог подробного описания начислений */
+}
+.redArrow { /* Красная стрелка для выделения неверно заполненных полей */
+}
+
+
+/* === css for timepicker === */
+.ui-ui-datepicker-div-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 22px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 5px 10px 60px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+/*.jqplot-series-canvas { background-color: #edebd6; padding: 0; margin: 0; }
+.jqplot-series-shadowCanvas { top: 0; left: 0; margin: 0; padding: 0; }*/
+
+/* === Chosen === */
+.ui-dialog .chzn-container .chzn-results { max-height: 150px !important; }
+
+/* === Plot === */
