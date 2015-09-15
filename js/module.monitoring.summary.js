@@ -520,8 +520,10 @@ function generateSummary(summary) {
 					field_ids: summary[index].field_ids,
 					operation: summary[index].operation,
 					value_scale: summary[index].value_scale,
-					date_begin: moment(summary[index].date_begin, "DD.MM.YYYY HH:mm").format("X"),
-					date_end: moment(summary[index].date_end, "DD.MM.YYYY HH:mm").format("X"),
+					//date_begin: moment(summary[index].date_begin, "DD.MM.YYYY HH:mm").format("X"),
+					//date_end: moment(summary[index].date_end, "DD.MM.YYYY HH:mm").format("X"),
+					date_begin: summary[index].date_begin,
+					date_end: summary[index].date_end,
 					callback_position: index,
 					divide: 0,
 					use_corrections: 1

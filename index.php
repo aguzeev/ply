@@ -35,7 +35,7 @@ if ( isset($_COOKIE['login']) && isset($_COOKIE['password']) && !$_SESSION['v2_u
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
 <script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/common.js?v1"></script>
 <script language="javascript" src="js/chosen2.jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.ui.datepicker-ru.js"></script>
 <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>

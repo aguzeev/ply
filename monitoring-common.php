@@ -7,3 +7,18 @@
 ?>
 </div>
 <!--<div style="width: 100%; background: #FCE5CF; border-top: 2px #FECEA8 solid; border-bottom: 2px #FECEA8 solid; text-align: center; padding: 5px 0; margin: 0 auto 10px; color: #AB7B6F;">По-видимому, с 12:30 субботы на заводе отсутствует соединение с интернетом.</div>-->
+
+<iframe width="1" height="1" class="dailyCountFrame" id="dailyCountFrame" style="visibility: hidden; position: absolute;"></iframe>
+<iframe width="1" height="1" class="maxesFrame" id="maxesFrame" style="visibility: hidden; position: absolute;"></iframe>
+<script language="javascript">
+$(document).ready(function(e) {
+    // Максимумы и дневные значения
+	$.ajax({
+		url: "includes/monitoring/getLastDailyProcess.php",
+		type: 'get',
+		dataType: 'json'
+	}).done(function(data) {
+		if ( data.calculate == 1 ) process_daily_count();
+	});
+});
+</script>

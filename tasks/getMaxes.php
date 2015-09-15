@@ -57,6 +57,13 @@ if ( $_DEBUG ) {
 		$prevChecktime = "2012-01-01 00:00";
 		$prevMax = 0;
 	}
+	
+	// only last year processing:
+	if ( strtotime($prevMaxAt) < (date("U") - 31536000) ) {
+		$prevChecktime = date("Y-m-d H:i", date("U") - 31536000);
+		$prevMax = 0;
+		echo "Last maximum was set more than a year ago!<br>";
+	}
 
 	$hour = date( "G", strtotime($prevChecktime) );
 	while ( $hour % 8 != 0 ) {

@@ -1,0 +1,316 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Система статистики Хардвуд трейдинг</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="stylesStat.css">
+<link rel="stylesheet" href="css/style-monitoring.css">
+<!--[if IE]><link rel="stylesheet" href="styles_ie.css" /> <![endif]-->
+<link rel="stylesheet" href="js/css/jquery-ui-1.10.3.custom.css">
+<link rel="stylesheet" href="js/css/chosen.css">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="js/css/jquery.pnotify.default.css" media="all" type="text/css">
+<link rel="stylesheet" href="js/css/jquery.pnotify.default.icons.css" media="all" type="text/css">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
+<script type="text/javascript" src="js/common.js?v1"></script>
+<script language="javascript" src="js/chosen2.jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.datepicker-ru.js"></script>
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="js/jquery.json-2.3.min.js"></script>
+<script type="text/javascript" src="js/moment.min.js?v1"></script>
+<script type="text/javascript" src="js/jquery.pnotify.min.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="naviContainer">
+    <div id="billNavigation">
+    	<ul>
+        	<li><a href="index.php?act=users">Пользователи</a>
+            	<ul>
+                	<li><a href="index.php?act=users.activity">Журнал активности</a></li>
+                </ul>
+            </li>
+            <li class="activeLi"><a href="index.php?act=monitoring.cp">Мониторинг</a>
+                <table cellpadding="0" cellspacing="0" border="0">
+                	<tbody><tr><td valign="top">
+                    	<ul style="position: static;">
+                            <li><a href="index.php?act=monitoring.cp">Персональный</a></li>
+                            <li><a href="index.php?act=monitoring.current">Текущий</a></li>
+                            <li><a href="index.php?act=monitoring.period">Детальный за период</a></li>
+                            <li><a href="index.php?act=monitoring.month">За месяц</a></li>
+                            <li><a href="index.php?act=monitoring.year">За год</a></li>
+                        </ul>
+                    </td>
+                    <!--<td valign="top">
+                    	<ul id="monitoring" style="position: static;">
+                            <li data-mach="0" class="updatable"><a href="index.php?act=monitoring&mach=0">Лущение</a></li>
+                            <li data-mach="1" class="updatable"><a href="index.php?act=monitoring&mach=1">Ножницы</a></li>
+                            <li data-mach="3" class="updatable"><a href="index.php?act=monitoring&mach=3">Сушилка</a></li>
+                            <li><a href="index.php">Уч. 1: Лущение + сушка</a></li>
+                            
+                            <li data-mach="2" class="updatable"><a href="index.php?act=monitoring&mach=2">Котельная</a></li>
+                            <li data-mach="4" class="updatable"><a href="index.php?act=monitoring&mach=4">Опиловка</a></li>
+                        </ul>
+                    	
+                    </td>-->
+                </tr></tbody></table>
+            </li>
+            <li><a href="index.php?act=workers">Персонал</a>
+            	<ul>
+                	<li><a href="index.php?act=workers">Штатное расписание</a></li>
+                	<li><a href="index.php?act=appointments">Должности</a></li>
+                    <li><a href="index.php?act=operations">Перечень&nbsp;операций</a></li>
+                </ul>
+            </li>
+            <li><a href="index.php?act=rates">Тарифы</a>
+            	<ul>
+                	<li><a href="index.php?act=rates">Тарифы&nbsp;на&nbsp;производство</a></li>
+                    <li><a href="index.php?act=fixedprice">Базовые&nbsp;части<br>
+сдельной&nbsp;з/п</a></li>
+                    <li style="cursor: not-allowed;"><a href="#" style="cursor: not-allowed;">Оклады</a></li>
+                </ul>
+            </li>
+            <li><a href="index.php?act=timeboard">Табель</a>
+            	<ul>
+                	<li><a href="index.php?act=timeboard">Выходы&nbsp;на&nbsp;работу</a></li>
+                	<li style="cursor: not-allowed;"><a href="#" style="cursor: not-allowed;">Отпуска</a></li>
+                    <li style="cursor: not-allowed;"><a href="#" style="cursor: not-allowed;">Больничные</a></li>
+                    <li style="cursor: not-allowed;"><a href="#" style="cursor: not-allowed;">Прогулы</a></li>
+                    <li style="cursor: not-allowed;"><a href="#" style="cursor: not-allowed;">Премии&nbsp;и&nbsp;штрафы</a></li>
+                </ul>
+            </li>
+            <li><a href="index.php?act=production">Выполненные объёмы</a></li>
+            <li><a href="index.php?act=accural">Начисления з/п</a></li>
+            <li><a href="login.php?logout">Выход</a></li>
+            
+        </ul>
+    	<!--
+        
+        -->
+        <div class="updates">
+        	<img src="img/news.png" alt="Обновления" title="Обновления"><!--<span class="updatesCounter"></span>-->
+<div class="updatesList" id="updatesList">
+<p style="font-weight: bold">Обновления</p><p>Добавлен автоматический запуск процессов подсчёта дневных значений и максимумов.
+</p><p>В «детальный» график лущения добавлены графики толщины шпона и зазора ножа, <a href="http://www.ply-stat.ru/v2/index.php?act=monitoring.period&amp;mach=0&amp;field=9,10&amp;start=today">например</a>.
+</p><p>Новая функция «график на сегодня»: генерация ссылки на выбранный график «детального» мониторинга на актуальное время — добавив её в избранное, вы сможете в один клик перейти к определённому графику за текущие сутки, например <a href="http://www.ply-stat.ru/v2/index.php?act=monitoring.period&amp;mach=0&amp;field=1,8&amp;start=today">так</a>.
+</p><p>Маска для ввода даты в «детальном» мониторинге.
+</p><p>Исправлена ошибка отображения показателей работы в «текущем» мониторинге в период 0—8 часов утра.
+</p><p align="center"><a href="index.php?act=updates">Предыдущие обновления</a></p>        </div>
+       </div>
+        
+    </div>
+</div>
+<!--<p align="center" style="background-color: #FFDADA; padding: 5px 0;">Проводятся работы по обновлению компонентов системы.</p>-->
+
+
+
+﻿
+
+
+<link rel="stylesheet" href="styleMonitoring.css">
+<link rel="stylesheet" href="js/jqplot/jquery.jqplot.css">
+
+<link rel="stylesheet" href="css/style-monitoring.css">
+<div class="monitoringCommonNav">
+<a href="index.php?act=monitoring.cp"><span class="option">персональный</span></a><a href="index.php?act=monitoring.current"><span class="option">текущий</span></a><a href="index.php?act=monitoring.period"><span class="option">детальный за период</span></a><a href="index.php?act=monitoring.month"><span class="option">за месяц</span></a><a href="index.php?act=monitoring.year"><span class="option">за год</span></a><a href="index.php?act=monitoring.dissipation"><span class="option">использование сырья</span></a><a href="index.php?act=monitoring.state"><span class="option active">состояние системы</span></a>
+
+<p class="lastSync">Последняя синхронизация с заводом: 06.03.2015 17:31</p></div>
+<!--<div style="width: 100%; background: #FCE5CF; border-top: 2px #FECEA8 solid; border-bottom: 2px #FECEA8 solid; text-align: center; padding: 5px 0; margin: 0 auto 10px; color: #AB7B6F;">По-видимому, с 12:30 субботы на заводе отсутствует соединение с интернетом.</div>-->
+
+<iframe width="1" height="1" class="dailyCountFrame" id="dailyCountFrame" style="visibility: hidden; position: absolute;"></iframe>
+<iframe width="1" height="1" class="maxesFrame" id="maxesFrame" style="visibility: hidden; position: absolute;"></iframe>
+<script language="javascript">
+$(document).ready(function(e) {
+    // Максимумы и дневные значения
+	$.ajax({
+		url: "includes/monitoring/getLastDailyProcess.php",
+		type: 'get',
+		dataType: 'json'
+	}).done(function(data) {
+		if ( data.calculate == 1 ) process_daily_count();
+	});
+});
+</script>
+<div style="width: 90%; margin: 0 auto;">
+    <div>
+        <h1>Warmer-in</h1>
+        <p>Socket state: <span id="state_in">Connected</span></p>
+        <p>Ping-pong delay: <span id="pp_delay_in">377 ms</span></p>
+        <p>Last square: <span id="sq_span_in">wait...</span></p>
+        <p>CPU temperature: <span id="cpu_temp_span_in">wait...</span></p>
+    </div>
+    
+    <div>
+        <h1>Warmer-out</h1>
+        <p>Socket state: <span id="state_out">Connected</span></p>
+        <p>Ping-pong delay: <span id="pp_delay_out">376 ms</span></p>
+        <p>30 min koef: <span id="koef30min_span_out">91.10 (18:34:30)</span></p>
+        <p>width: <span id="width_span_out">1.20 (18:34:30)</span></p>
+        <p>height: <span id="height_span_out">1.24 (18:34:30)</span></p>
+        <p>CPU temperature: <span id="cpu_temp_span_out">wait...</span></p>
+    </div>
+</div>
+<p class="supportEmail">О замеченных на сайте ошибках, пожалуйста, сообщайте по адресу <a href="mailto:admin@ply-stat.ru">admin@ply-stat.ru</a>.</p>
+
+<div id="debug" style="width: 100%; height: 100px;"></div>
+<div id="debug2" style="width: 100%; height: 100px;"></div>
+
+
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-showError" style="display: none; z-index: 1000; outline: 0px; position: absolute;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title" id="ui-dialog-title-showError">Ошибка</span><a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a></div><div id="showError" style="" class="ui-dialog-content ui-widget-content">
+<table cellpadding="5" style="display: none;">
+<tbody><tr>
+<td valign="middle"><img src="img/alert_icon.png"></td>
+<td valign="middle">
+	<p id="errorSource"></p>
+	<p><span id="errorText"></span> Попробуйте обновить страницу или сбросить значения фильтров.</p>
+</td>
+</tr>
+</tbody></table></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 1000;"></div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Ok</span></button></div></div></div>
+
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+    state_in();
+	state_out();
+});
+
+function state_in() {
+	var socket;
+	var echoStart = new Date().getTime();
+
+    var host = "ws://188.226.151.100:8765/fanera/ws/warmer_in/";
+    socket = new WebSocket(host);
+
+    socket.onopen = function() {
+        document.getElementById('state_in').innerHTML= 'Connected';
+        socket.send(JSON.stringify({type: 'echo'}));
+    }
+
+    socket.onmessage = function(msg){
+        obj = JSON.parse(msg.data);
+
+        if(obj.type == 'realtime_data')
+        {
+            var d = new Date(obj.current_list.timestamp);
+            var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+            var dt = new Date(utc);
+             var hoursValue = dt.getHours();
+             var minutesValue = dt.getMinutes();
+             var secondsValue = dt.getSeconds();
+
+             if ( hoursValue < 10 )
+              hoursValue = '0' + hoursValue;
+             if ( minutesValue < 10 )
+              minutesValue = '0' + minutesValue;
+             if ( secondsValue < 10 )
+              secondsValue = '0' + secondsValue;
+
+            var dateStr = 
+            hoursValue + ":" +
+            minutesValue + ":" +
+            secondsValue;
+            var ts = " (" + dateStr + ")";
+            if("square" in obj.current_list)
+                document.getElementById('sq_span_in').innerHTML=obj.current_list.square.toFixed(2) + ts;
+            if("CPU_temperatures" in obj.current_list)
+            {
+                var a = 0;
+                for (var i = 0; i < obj.current_list.CPU_temperatures.length; i++)
+                {
+                    a += parseFloat(obj.current_list.CPU_temperatures[i]);
+                }
+                a /= obj.current_list.CPU_temperatures.length;
+                document.getElementById('cpu_temp_span_in').innerHTML= a + String.fromCharCode(8451) + ts;
+            }
+        }
+        else if(obj.type == 'echo')
+        {
+            var delay = new Date().getTime() - echoStart;
+            document.getElementById('pp_delay_in').innerHTML=delay + " ms";
+        }
+    }
+
+    socket.onclose = function(){
+        document.getElementById('state_in').innerHTML = 'Closed';
+    }           
+};
+
+function state_out() {
+	var socket;
+	var echoStart = new Date().getTime();
+    
+    var host = "ws://188.226.151.100:8765/fanera/ws/warmer_out/";
+    socket = new WebSocket(host);
+
+    socket.onopen = function() {
+        document.getElementById('state_out').innerHTML= 'Connected';
+        socket.send(JSON.stringify({type: 'echo'}));
+    }
+
+    socket.onmessage = function(msg){
+        obj = JSON.parse(msg.data);
+
+        if(obj.type == 'realtime_data')
+        {
+            var d = new Date(obj.current_list.timestamp);
+            var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+            var dt = new Date(utc);
+
+             var hoursValue = dt.getHours();
+             var minutesValue = dt.getMinutes();
+             var secondsValue = dt.getSeconds();
+
+             if ( hoursValue < 10 )
+              hoursValue = '0' + hoursValue;
+             if ( minutesValue < 10 )
+              minutesValue = '0' + minutesValue;
+             if ( secondsValue < 10 )
+              secondsValue = '0' + secondsValue;
+
+            var dateStr = 
+            hoursValue + ":" +
+            minutesValue + ":" +
+            secondsValue;
+            var ts = " (" + dateStr + ")";
+            if("width" in obj.current_list)
+                document.getElementById('width_span_out').innerHTML=obj.current_list.width.toFixed(2) + ts;
+            if("height" in obj.current_list)
+                document.getElementById('height_span_out').innerHTML=obj.current_list.height.toFixed(2) + ts;
+            if("koef30min" in obj.current_list)
+                document.getElementById('koef30min_span_out').innerHTML=obj.current_list.koef30min.toFixed(2) + ts;
+            if("CPU_temperatures" in obj.current_list)
+            {
+                var a = 0;
+                for (var i = 0; i < obj.current_list.CPU_temperatures.length; i++)
+                {
+                    a += parseFloat(obj.current_list.CPU_temperatures[i]);
+                }
+                a /= obj.current_list.CPU_temperatures.length;
+                document.getElementById('cpu_temp_span_out').innerHTML=a + String.fromCharCode(8451) + ts;
+            }
+			 $.ajax({
+				 url: "dumpWarmerOutData.php",
+				 data: {
+					 width: obj.current_list.width.toFixed(2),
+					 height: obj.current_list.height.toFixed(2)
+				 }
+			 });
+        }
+        else if(obj.type == 'echo')
+        {
+            var delay = new Date().getTime() - echoStart;
+            document.getElementById('pp_delay_out').innerHTML=delay + " ms";
+        }
+    }
+
+    socket.onclose = function(){
+        document.getElementById('state_out').innerHTML = 'Closed';
+    }           
+};
+</script>
+</body></html>

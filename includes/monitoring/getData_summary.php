@@ -18,14 +18,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $fieldsArrayMysql[] = 'SUM(`' . $value . '`)';
 		$fieldsString = implode(' + ', $fieldsArrayMysql);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -46,14 +46,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $fieldsArrayCount[] = 'COUNT(`' . $value . '`)';
 		$fieldsString = implode(' + ', $fieldsArraySum) . ', ' . implode(' + ', $fieldsArrayCount);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -74,14 +74,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $fieldsArrayCount[] = 'COUNT(`' . $value . '`)';
 		$fieldsString = implode(' + ', $fieldsArraySum) . ', ' . implode(' + ', $fieldsArrayCount);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -106,14 +106,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $notNull[] = '`' . $value . '` > 0';
 		$notNullString = implode(' AND ', $notNull);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -135,14 +135,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $fieldsArraySum[] = 'SUM(`' . $value . '`)';
 		$fieldsString = implode(', ', $fieldsArraySum);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -167,14 +167,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $fieldsArrayCount[] = 'COUNT(`' . $value . '`)';
 		$fieldsString = implode(' + ', $fieldsArrayCount);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -194,14 +194,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $whereCondition[] = '`' . $value . '` != 0';
 		$whereString = ' AND ' . implode(' AND ', $whereCondition);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')" . $whereString;
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')" . $whereString;
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')" . $whereString . ")";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')" . $whereString . ")";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -218,14 +218,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $fieldsArraySum[] = 'SUM(`' . $value . '`)';
 		$fieldsString = implode(' + ', $fieldsArraySum);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -249,14 +249,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $fieldsArraySum[] = 'SUM(`' . $value . '`)';
 		$fieldsString = implode(' + ', $fieldsArraySum);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -280,14 +280,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $fieldsArraySum[] = 'SUM(`' . $value . '`)';
 		$fieldsString = implode(' + ', $fieldsArraySum);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -305,14 +305,14 @@ switch ($operation) {
 		foreach ($fieldsArray as $value) $fieldsArraySum[] = 'COUNT(`' . $value . '`)';
 		$fieldsString = implode(' + ', $fieldsArraySum);
 		
-		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+		$mainQuery = "SELECT " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 		
 		if ($use_corrections) {
 			$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
 			if ($use_daily_flag) {
 				$machine_corrections .= "_daily";
 			}
-			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+			$mainQuery .= " UNION ALL (SELECT " . $fieldsString . " FROM `" . $machine_corrections . "`WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 		}
 		
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
@@ -328,7 +328,7 @@ switch ($operation) {
 	case 'active_time': // may be several fields
 		foreach ($fieldsArray as $value) $fieldsArraySum[] = '`' . $value . '`';
 		$fieldsString = implode(' + ', $fieldsArraySum);
-		$mainQuery = "SELECT `timestamp`, " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow') AND (". $fieldsString . ") > 0";
+		$mainQuery = "SELECT `timestamp`, " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00') AND (". $fieldsString . ") > 0";
 		if ($_DEBUG) echo "mainQuery: " . $mainQuery . "<br>";
 		if ( ($mainResult = mysql_query($mainQuery, $connection_hardware)) == 0 ) {	die(mysql_error()); }
 		

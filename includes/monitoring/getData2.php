@@ -87,14 +87,30 @@ if ( isset($plot_variant) or isset($_GET['plot_variant']) ) {
 
 
 if ( !isset($date_begin) ) {
-	if ( isset($_GET['date_begin']) ) $date_begin = intval(mysql_real_escape_string($_GET['date_begin']));
-	else { echo json_encode(array("result"=>"error","text"=>"Не указана дата начала отсчёта (date_begin)","source"=>"getData (new)")); die(); };
+	if ( isset($_GET['date_begin']) ) {
+		$date_begin = mysql_real_escape_string($_GET['date_begin']);
+		if ( preg_match("/^\d\d?.\d\d?.\d\d\d\d\s\d\d?\:\d\d?(\:\d\d?)?$/", $date_begin, $matches_begin) ) {
+			// got date in dd.mm.yyyy hh:mm format
+			$date_begin = strtotime( $matches_begin[0] );
+		} else {
+			// got date in unixtime format
+			$date_begin = intval( $date_begin );
+		}
+ 	} else { echo json_encode(array("result"=>"error","text"=>"Не указана дата начала отсчёта (date_begin)","source"=>"getData (new)")); die(); };
 }
 
 
 if ( !isset($date_end) ) {
-	if ( isset($_GET['date_end']) ) $date_end = intval(mysql_real_escape_string($_GET['date_end']));
-	else { echo json_encode(array("result"=>"error","text"=>"Не указана дата окончания отсчёта (date_end)","source"=>"getData (new)")); die(); };
+	if ( isset($_GET['date_end']) ) {
+		$date_end = mysql_real_escape_string($_GET['date_end']);
+		if ( preg_match("/^\d\d?.\d\d?.\d\d\d\d\s\d\d?\:\d\d?(\:\d\d?)?$/", $date_end, $matches_end) ) {
+			// got date in dd.mm.yyyy hh:mm format
+			$date_end = strtotime( $matches_end[0] );
+		} else {
+			// got date in unixtime format
+			$date_end = intval( $date_end );
+		}
+ 	} else { echo json_encode(array("result"=>"error","text"=>"Не указана дата окончания отсчёта (date_end)","source"=>"getData (new)")); die(); };
 }
 
 
@@ -150,6 +166,8 @@ $returnValue = -1;
 
 if ( $divide ) include('getData_divided.php'); // summary values
 else include('getData_summary.php'); // values for graph
+
+$total_result["query"] = $mainQuery;
 
 if ( $_IS_INCLUDED != true ) echo json_encode( $total_result );
 

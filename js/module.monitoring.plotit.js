@@ -94,14 +94,16 @@ function plotIt2() {
 				return false;
 			}
 		}
-	
+
 		ajax_array[index] = $.ajax({
 				url: 'includes/monitoring/getData2.php',
 				data: {
 					plot_variant: plot_variant,
 					mx: $('#mx').attr('value'),
-					date_begin: moment(dateBegin, "DD.MM.YYYY HH:mm").format("X"),
-					date_end: moment(dateEnd, "DD.MM.YYYY HH:mm").format("X"),
+					//date_begin: moment(dateBegin, "DD.MM.YYYY HH:mm").format("X"),
+					//date_end: moment(dateEnd, "DD.MM.YYYY HH:mm").format("X"),
+					date_begin: dateBegin,
+					date_end: dateEnd,
 					divide: 1,
 					use_corrections: 0
 				},

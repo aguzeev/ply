@@ -46,6 +46,14 @@ $machines = array(
 		"sqLd" => "null",
 		"totalSq" => "sum",
 	),
+	"warmer_out" => array(
+		"usefull_square" => "sum",
+		"usefull_quant" => "sum",
+		"merger_square" => "sum",
+		"merger_quant" => "sum",
+		"useless_square" => "sum",
+		"useless_quant" => "sum",
+	),
 	"lopping" => array(
 		"length" => "null",
 		"width" => "null",
@@ -143,6 +151,18 @@ $scaleOrig = array(
 		'packages' => 1,
 		"totalSq" => 100
 	),
+	'warmer_out' => array(
+		"usefull_square" => 10,
+		"usefull_quant" => 1,
+		"merger_square" => 10,
+		"merger_quant" => 1,
+		"useless_square" => 10,
+		"useless_quant" => 1,
+	),
+	'warmer' => array(
+		'packages' => 1,
+		"totalSq" => 100
+	),
 	"lopping" => array(
 		"value" => "1000000000",
 	),
@@ -193,6 +213,14 @@ $scalePerMonth = array(
 	'warmer' => array(
 		'packages' => 1,
 		'totalSq' => 10
+	),
+	'warmer_out' => array(
+		"usefull_square" => 10,
+		"usefull_quant" => 1,
+		"merger_square" => 10,
+		"merger_quant" => 1,
+		"useless_square" => 10,
+		"useless_quant" => 1
 	),
 	"lopping" => array(
 		"value" => "100",

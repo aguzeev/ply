@@ -40,7 +40,7 @@ foreach ($fieldsArray as $value) $fieldsArrayMysql[] = '`' . $value . '`';
 $fieldsString = implode(', ', $fieldsArrayMysql);
 //$mainQuery = "SELECT `timestamp`, " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN STR_TO_DATE('" . date("Y-m-d G:i:s", $date_begin) . "', '%Y-%m-%d %H:%i:%s') AND STR_TO_DATE('" . date("Y-m-d G:i:s", $date_end) . "', '%Y-%m-%d %H:%i:%s')";
 
-$mainQuery = "SELECT `timestamp`, " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow')";
+$mainQuery = "SELECT `timestamp`, " . $fieldsString . " FROM `" . $machine . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00')";
 
 if ($use_corrections) {
 	$machine_corrections = str_replace("_daily", "", $machine) . "_corrections";
@@ -48,7 +48,7 @@ if ($use_corrections) {
 		$machine_corrections .= "_daily";
 	}
 	
-	$mainQuery .= " UNION ALL (SELECT `timestamp`, " . $fieldsString . " FROM `" . $machine_corrections . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', 'Europe/Moscow') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', 'Europe/Moscow'))";
+	$mainQuery .= " UNION ALL (SELECT `timestamp`, " . $fieldsString . " FROM `" . $machine_corrections . "` WHERE `timestamp` BETWEEN CONVERT_TZ(FROM_UNIXTIME(" . $date_begin. "), 'SYSTEM', '+03:00') AND CONVERT_TZ(FROM_UNIXTIME(" . $date_end . "), 'SYSTEM', '+03:00'))";
 }
 $mainQuery .= " ORDER BY `timestamp`";
 if ($_DEBUG) { echo "mainQuery: " . $mainQuery . "<br>"; }

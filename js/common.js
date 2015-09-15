@@ -150,3 +150,9 @@ function markElements(elem) { //выделение неверно заполне
 		//$('#' + elem[key]).after('<span class="redArrow"><img src="/img/red-arrow.png" style="margin: 0 0 0 5px;" /></span>');
 	}
 }
+
+function process_daily_count() {
+	var alertStart = myAlert("Выполняется обновление дневных значений и максимумов.");
+	$("#dailyCountFrame").attr("src", "tasks/generateDailyValues.php");
+	$("#maxesFrame").attr("src", "tasks/maxes.php");
+}

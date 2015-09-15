@@ -92,10 +92,10 @@ $activeComponent = 'current'; include('monitoring-common.php');
   </tr>
 </table>
 <p>&nbsp;</p>
-<h3 align="center">Лучше смены</h3>
+<h3 align="center">Лучше смены за год</h3>
 <div id="maxesContainer" class="maxesContainer" align="center">
 </div>
-<p align="center">При подсчёте не учитывались скорретированные вручную показания.</p>
+<p align="center">Данные за предыдущие 365 дней. При подсчёте не учитывались скорретированные вручную показания.</p>
 
 <script id="leaderShiftTemplate" type="text/x-jquery-tmpl">
 	<a href="${link}" class="leaderShift">

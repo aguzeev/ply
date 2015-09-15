@@ -9,7 +9,8 @@ $machineNames = array(
 	'Сращивание',
 	'Распиловка',
 	'Пресс',
-	'Раскряжёвка'
+	'Раскряжёвка',
+	'Ребросклейка'
 );
 
 $plotVariants = array(
@@ -301,7 +302,7 @@ $plotVariants = array(
 		array( // 5
 			'title' => 'Выход сухого шпона',
 			'machine' => 'warmer_out',
-			'field' => array('usefull_square', 'merger_square', 'useless_square'),
+			'field' => array('usefull_square', 'merger_square'), // , 'useless_square'
 			'operation' => 'valueFromSquare',
 			'valueScale' => 100,
 			'valueDailyScale' => 10,
@@ -968,6 +969,76 @@ $plotVariants = array(
 			'units' => ' мм',
 			'yAxisMin' => 0,
 			'yAxisFormat' => '%.0f',
+		),
+	),
+	array( // 10. edge_gluing
+		array( // 0
+			'title' => 'Количество листов',
+			'machine' => 'edge_gluing',
+			'field' => array('merges'),
+			'operation' => 'countNotZero',
+			'valueScale' => 1,
+			'valueDailyScale' => 1,
+			'units' => ' шт',
+			'yAxisMin' => 0,
+			'yAxisFormat' => '%.0f'
+		),
+		array( // 1
+			'title' => 'Длина листа',
+			'machine' => 'edge_gluing',
+			'field' => array('length'),
+			'operation' => 'asIs',
+			'valueScale' => 1,
+			'valueDailyScale' => 1,
+			'units' => ' мм',
+			'yAxisMin' => 0,
+			'yAxisFormat' => '%.0f',
+			'showLine' => false
+		),
+		array( // 2
+			'title' => 'Ширина листа',
+			'machine' => 'edge_gluing',
+			'field' => array('width'),
+			'operation' => 'asIs',
+			'valueScale' => 1,
+			'valueDailyScale' => 1,
+			'units' => ' мм',
+			'yAxisMin' => 0,
+			'yAxisFormat' => '%.0f',
+			'showLine' => false
+		),
+		array( // 3
+			'title' => 'Количество сращиваний',
+			'machine' => 'edge_gluing',
+			'field' => array('merges'),
+			'operation' => 'sum',
+			'valueScale' => 1,
+			'valueDailyScale' => 1,
+			'units' => ' шт',
+			'yAxisMin' => 0,
+			'yAxisFormat' => '%.0f',
+		),
+		array( // 4
+			'title' => 'Среднее число сращиваний на лист',
+			'machine' => 'edge_gluing',
+			'field' => array('merges'),
+			'operation' => 'avg',
+			'valueScale' => 1,
+			'valueDailyScale' => 1,
+			'units' => ' шт/лист',
+			'yAxisMin' => 0,
+			'yAxisFormat' => '%.0f',
+		),
+		array( // 5
+			'title' => 'Объём срощенных листов',
+			'machine' => 'edge_gluing',
+			'field' => array('square'),
+			'operation' => 'valueFromSquare',
+			'valueScale' => 1000,
+			'valueDailyScale' => 1,
+			'units' => ' м<sup>3</sup>',
+			'yAxisMin' => 0,
+			'yAxisFormat' => '%.2f',
 		),
 	)
 );
