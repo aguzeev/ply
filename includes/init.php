@@ -35,4 +35,6 @@ if ( isset($LOG_TITLE) ) unset($LOG_TITLE);
 if ( isset($ACCESSED_MODULE) ) unset($ACCESSED_MODULE);
 $_LOGGING = true;
 
+$_monthes_rp = array("января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря");
+
 ?>

@@ -180,6 +180,9 @@ div#billNavigation ul ul li {
 	border: none;
 	color: #FFFFFF;
 }
+div#billNavigation ul ul li.activeLiInner {
+	background: #A0A0A0 !important;
+}
 div#billNavigation ul ul li.updatable {
 	background: url(img/loading_small.gif) 90% 50% no-repeat;
 }
@@ -485,4 +488,87 @@ div#accuralDetails { /* Диалог подробного описания на�
 /* === Chosen === */
 .ui-dialog .chzn-container .chzn-results { max-height: 150px !important; }
 
-/* === Plot === */
+/* === Warehouse === */
+/* === Warehouse Tasks === */
+table.whTasks { width: 98%; min-width: 500px; max-width: 1280px; margin: 1em auto; border-collapse: collapse; }
+table.whTasks thead td { background-color: #bfbfbf !important; }
+
+table.whTasks tbody { border-top: 1px #7f7f7f solid; border-bottom: 1px #7f7f7f solid; }
+table.whTasks tbody tr:nth-child(even) td { background-color: #eeefee; }
+table.whTasks tbody tr:hover td:not(.whUnhoverable) { background-color: #eceaaa; }
+
+table.whTasks td { padding: 7px 5px; box-sizing: border-box; }
+table.whTasks td.taskNumber { width: 50px; font-size: 10px; }
+table.whTasks td.whShift { width: 70px; }
+table.whTasks td.whType { width: 60px; text-align: center; }
+table.whTasks td.whWidth { width: 80px; text-align: left; }
+table.whTasks td.whLength { width: 80px; text-align: left; }
+table.whTasks td.whThickness { width: 70px; text-align: left; }
+table.whTasks td.whSort1 { width: 60px; text-align: center; }
+table.whTasks td.whSort2 { width: 60px; text-align: center; }
+table.whTasks td.whSanding { width: 110px; text-align: center; }
+table.whTasks td.whQuantity { width: 70px; text-align: left; }
+table.whTasks td.whComment { }
+table.whTasks td.whReadiness { width: 75px; text-align: left; }
+table.whTasks td.whEditColumn { width: 90px; }
+.whShiftNumber_1 { background-color: #DEFFF5; padding: 2px; }
+.whShiftNumber_2 { background-color: #DFE4FF; padding: 2px; }
+
+table.whTasks .currentDayTask { color: #A0A0A0; }
+table.whTasks .taskNumber { color: #cacaca; }
+table.whTasks tr.notSavedYet td { background-color: #D2FFE2 !important; }
+
+table.whTasks tr.addNewRow td { text-align: center; height: 40px; cursor: pointer; }
+table.whTasks tr.addNewRow:hover td { background-color: #D2FFE2 !important; transition: ease all .2s; font-size: 120%; }
+table.whTasks tr.addNewRow span { color: #288204; padding: .2em 1em; border: 1px #288204 solid;
+		-webkit-border-radius: 1em;
+		-moz-border-radius: 1em;
+	border-radius: 1em;
+}
+
+/* === Warehouse Produced === */
+table.whProduced { width: 98%; min-width: 500px; max-width: 1280px; margin: 1em auto; border-collapse: collapse; }
+table.whProduced thead td { background-color: #bfbfbf !important; }
+
+table.whProduced tbody tr:nth-child(even) td { background-color: #eeefee; }
+table.whProduced tbody tr:hover td:not(.whUnhoverable) { background-color: #eceaaa; }
+
+table.whProduced td { padding: 7px 5px; box-sizing: border-box; }
+table.whProduced td.whType { width: 70px; text-align: center; }
+table.whProduced td.whWidth { width: 70px; text-align: left; }
+table.whProduced td.whLength { width: 70px; text-align: left; }
+table.whProduced td.whThickness { width: 60px; text-align: left; }
+table.whProduced td.whSort1 { width: 60px; text-align: center; }
+table.whProduced td.whSort2 { width: 60px; text-align: center; }
+table.whProduced td.whSanding { width: 90px; text-align: center; }
+table.whProduced td.whPacksQuantity { width: 80px; text-align: left; }
+table.whProduced td.whListsInPack { width: 80px; text-align: left; }
+table.whProduced td.whTotalLists { width: 80px; text-align: left; }
+table.whProduced td.whVolume { width: 100px; text-align: left; }
+table.whProduced td.whClient { width: auto; text-align: left; }
+table.whProduced td.whActions { width: 40px; }
+
+.packingTasksPacking .icon-export { display: none; } /* "copy to packing" button */
+
+@font-face {
+      font-family: 'fontello';
+      src: url('css/font/fontello.eot?47017565');
+      src: url('css/font/fontello.eot?47017565#iefix') format('embedded-opentype'),
+           url('css/font/fontello.woff?47017565') format('woff'),
+           url('css/font/fontello.ttf?47017565') format('truetype'),
+           url('css/font/fontello.svg?47017565#fontello') format('svg');
+      font-weight: normal;
+      font-style: normal;
+}
+    
+.isIcon  { font-family: "fontello"; font-style: normal; font-weight: normal; speak: none; font-size: 120%; display: inline-block; text-decoration: inherit; width: 1em; margin-right: .2em; text-align: center; text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
+      /* For safety - reset parent styles, that can break glyph codes*/
+      font-variant: normal;
+      text-transform: none;
+      
+      line-height: 1em; /* fix buttons height, for twitter bootstrap */ 
+      margin-left: .2em; /* Animation center compensation - margins should be symmetric */
+}
+.noSuchFormatIcon { color: #C06700; cursor: help; visibility: hidden; }
+.processIcon { visibility: hidden; }
+.fieldError, .fieldError * { background-color: #FFEAEA; }

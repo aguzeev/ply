@@ -25,21 +25,18 @@ body { font-family: Tahoma, Geneva, sans-serif; font-size: 90%; }
 	font-weight: bold;
 	padding: 5px;
 }
-table.editBar {
+.editBar {
 	float: right;
 	visibility: hidden;
 }
 table.editBar td {
 	border: none !important;
 }
-.addButton {
-	height: 30px;
-	background-color: #390;
-	border: #FFF double;
-	border-radius: 5px;
-	color: #FFF;
-	margin: 5px;
-}
+table.whEditable tr .editBar { visibility: hidden; }
+table.whEditable tr:hover .editBar { visibility: visible; }
+.addButton { height: 30px; background-color: #390; border: #FFF double; border-radius: 5px; color: #FFF; margin: 5px; cursor: pointer; }
+.saveButton { height: 30px; background-color: #79F; border: #FFF double; border-radius: 5px; color: #FFF; margin: 5px; cursor: pointer; }
+.cancelButton { height: 30px; background-color: #930; border: #FFF double; border-radius: 5px; color: #FFF; margin: 5px; cursor: pointer; }
 #loginFormContainer {
 	margin: 20% auto;
 	width: 250px;
@@ -107,3 +104,6 @@ table.editBar td {
 		-ms-transform: skew(15deg) rotate(6deg);
 		-o-transform: skew(15deg) rotate(6deg);          
 }
+
+.myAlertSuccess { border: 1px #008505 solid; background-color: #D3FFDA; color: #303030; }
+.isPointer { cursor: pointer; }

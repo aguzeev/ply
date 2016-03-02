@@ -26,21 +26,23 @@ if ( isset($_COOKIE['login']) && isset($_COOKIE['password']) && !$_SESSION['v2_u
 <link rel="stylesheet" href="stylesStat.css" />
 <link rel="stylesheet" href="css/style-monitoring.css" />
 <!--[if IE]><link rel="stylesheet" href="styles_ie.css" /> <![endif]-->
-<link rel="stylesheet" href="js/css/jquery-ui-1.10.3.custom.css" />
+<!--<link rel="stylesheet" href="js/css/jquery-ui-1.10.3.custom.css" />-->
+<link rel="stylesheet" href="js/css/jquery-ui.min.css" />
 <link rel="stylesheet" href="js/css/chosen.css" />
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="js/css/jquery.pnotify.default.css" media="all" type="text/css" />
 <link rel="stylesheet" href="js/css/jquery.pnotify.default.icons.css" media="all" type="text/css" />
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>-->
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
 <script type="text/javascript" src="js/common.js?v1"></script>
 <script language="javascript" src="js/chosen2.jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.ui.datepicker-ru.js"></script>
 <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
 <script type="text/javascript" src="js/jquery.json-2.3.min.js"></script>
-<script type="text/javascript" src="js/moment.min.js?v1"></script>
+<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="js/jquery.pnotify.min.js"></script>
 
 </head>
@@ -110,15 +112,15 @@ if (isset($_SESSION['v2_user_id'])) {
                 	<li><a href="index.php?act=users.activity">Журнал активности</a></li>
                 </ul>
             </li>
-            <li<?php if (strpos($act, 'monitoring')>-1) echo(" class='activeLi'");?>><a href="index.php?act=monitoring.cp">Мониторинг</a>
+            <li<?php if (strpos($act, 'monitoring') !== false) echo(" class='activeLi'");?>><a href="index.php?act=monitoring.cp">Мониторинг</a>
                 <table cellpadding="0" cellspacing="0" border="0">
                 	<tr><td valign="top">
                     	<ul style="position: static;">
-                            <li><a href="index.php?act=monitoring.cp">Персональный</a></li>
-                            <li><a href="index.php?act=monitoring.current">Текущий</a></li>
-                            <li><a href="index.php?act=monitoring.period">Детальный за период</a></li>
-                            <li><a href="index.php?act=monitoring.month">За месяц</a></li>
-                            <li><a href="index.php?act=monitoring.year">За год</a></li>
+                            <li<?php if ($act=='monitoring.cp') echo(" class='activeLiInner'");?>><a href="index.php?act=monitoring.cp">Персональный</a></li>
+                            <li<?php if ($act=='monitoring.current') echo(" class='activeLiInner'");?>><a href="index.php?act=monitoring.current">Текущий</a></li>
+                            <li<?php if ($act=='monitoring.period') echo(" class='activeLiInner'");?>><a href="index.php?act=monitoring.period">Детальный за период</a></li>
+                            <li<?php if ($act=='monitoring.month') echo(" class='activeLiInner'");?>><a href="index.php?act=monitoring.month">За месяц</a></li>
+                            <li<?php if ($act=='monitoring.year') echo(" class='activeLiInner'");?>><a href="index.php?act=monitoring.year">За год</a></li>
                         </ul>
                     </td>
                     <!--<td valign="top">
@@ -137,22 +139,23 @@ if (isset($_SESSION['v2_user_id'])) {
             </li>
             <li<?php if ($act=='workers'||$act=='appointments'||$act=='operations') echo(" class='activeLi'");?>><a href="index.php?act=workers">Персонал</a>
             	<ul>
-                	<li><a href="index.php?act=workers">Штатное расписание</a></li>
-                	<li><a href="index.php?act=appointments">Должности</a></li>
-                    <li><a href="index.php?act=operations">Перечень&nbsp;операций</a></li>
+                	<li<?php if ($act=='workers') echo(" class='activeLiInner'");?>><a href="index.php?act=workers">Штатное расписание</a></li>
+                	<li<?php if ($act=='appointments') echo(" class='activeLiInner'");?>><a href="index.php?act=appointments">Должности</a></li>
+                  <li<?php if ($act=='operations') echo(" class='activeLiInner'");?>><a href="index.php?act=operations">Перечень&nbsp;операций</a></li>
                 </ul>
             </li>
             <li<?php if ($act=='rates'||$act=='fixedprice') echo(" class='activeLi'");?>><a href="index.php?act=rates">Тарифы</a>
             	<ul>
-                	<li><a href="index.php?act=rates">Тарифы&nbsp;на&nbsp;производство</a></li>
-                    <li><a href="index.php?act=fixedprice">Базовые&nbsp;части<br />
+                	<li<?php if ($act=='rates') echo(" class='activeLiInner'");?>><a href="index.php?act=rates">Тарифы&nbsp;на&nbsp;производство</a></li>
+                  <li<?php if ($act=='fixedprice') echo(" class='activeLiInner'");?>><a href="index.php?act=fixedprice">Базовые&nbsp;части<br />
 сдельной&nbsp;з/п</a></li>
                     <li style="cursor: not-allowed;"><a href="#" style="cursor: not-allowed;">Оклады</a></li>
                 </ul>
             </li>
-            <li<?php if ($act=='timeboard') echo(" class='activeLi'");?>><a href="index.php?act=timeboard">Табель</a>
+            <li<?php if ( in_array($act, array('timeboard', 'accural')) ) echo(" class='activeLi'");?>><a href="index.php?act=timeboard">Табель</a>
             	<ul>
-                	<li><a href="index.php?act=timeboard">Выходы&nbsp;на&nbsp;работу</a></li>
+                	<li<?php if ($act=='timeboard') echo(" class='activeLiInner'");?>><a href="index.php?act=timeboard">Выходы&nbsp;на&nbsp;работу</a></li>
+                  <li<?php if ($act=='accural') echo(" class='activeLiInner'");?>><a href="index.php?act=accural">Начисления з/п</a></li>
                 	<li style="cursor: not-allowed;"><a href="#" style="cursor: not-allowed;">Отпуска</a></li>
                     <li style="cursor: not-allowed;"><a href="#" style="cursor: not-allowed;">Больничные</a></li>
                     <li style="cursor: not-allowed;"><a href="#" style="cursor: not-allowed;">Прогулы</a></li>
@@ -160,7 +163,13 @@ if (isset($_SESSION['v2_user_id'])) {
                 </ul>
             </li>
             <li<?php if ($act=='production') echo(" class='activeLi'");?>><a href="index.php?act=production">Выполненные объёмы</a></li>
-            <li<?php if ($act=='accural') echo(" class='activeLi'");?>><a href="index.php?act=accural">Начисления з/п</a></li>
+            <li<?php if ( strpos($act, 'warehouse') !== false ) echo(" class='activeLi'");?>><a href="index.php?act=warehouse.produced">Склад</a>
+				<ul>
+					<li<?php if ($act=='warehouse.produced') echo(" class='activeLiInner'");?>><a href="index.php?act=warehouse.produced">Готовая продукция</a></li>
+					<li<?php if ($act=='warehouse.tasks') echo(" class='activeLiInner'");?>><a href="index.php?act=warehouse.tasks">Ежедневные задания</a></li>
+                    <li<?php if ($act=='warehouse.formats') echo(" class='activeLiInner'");?>><a href="index.php?act=warehouse.formats">Справочник форматов</a></li>
+				</ul>
+            </li>
             <li><a href="login.php?logout">Выход</a></li>
             
         </ul>

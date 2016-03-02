@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Operator interface</title>
+<link rel="stylesheet" href="styles.css">
+<script language="javascript" src="jquery.min.js"></script>
+<script language="javascript" src="scripts.js"></script>
+
+</head>
+
+<body>
+
+<div class="screen">
+	<div class="statusBar">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td width="250"><p class="screenTitle">Печать новой этикетки</p></td>
+      <td>
+      	<span class="time">2 февраля 2016, 11:37</span>
+        <span class="syncStatus"><span>◉</span>&nbsp;Синхронизован</span>
+      </td>
+      <td width="170" align="center"><div class="button controlBtn btnToStart" onClick="javascript:location.href='startscreen.html'">К началу</div></td>
+      <td width="170" align="center"><div class="button controlBtn btnFlush">Сбросить</div></td>
+      <td width="250" align="right"><div class="button controlBtn btnNext">Продлжить</div></td>
+    </tr>
+  </tbody>
+</table>      
+    </div>
+    <div class="area params">
+        <div class="block">
+            <p class="heading">Марка</p>
+            <div class="button active">ФСФ</div>
+            <div class="button">ФБВ</div>
+        </div>
+        
+        <div class="block block_full">
+            <p class="heading">Длина</p>
+            <div class="button">1200</div>
+            <div class="button active">1220</div>
+            <div class="button">1245</div>
+            <div class="button">1250</div>
+        </div>
+        
+        <div class="block block_full">
+            <p class="heading">Ширина</p>
+            <div class="button">2350</div>
+            <div class="button">2440</div>
+            <div class="button active">2465</div>
+            <div class="button">2475</div>
+            <div class="button disabled">2500</div>
+            <div class="button disabled">2580</div>
+            
+            <!--<div class="button">2580</div>
+            <div class="button">2580</div>
+            <div class="button">2580</div>
+			<div class="button">2580</div>
+            <div class="button">2580</div>
+            <div class="button">2580</div>
+            <div class="button">2580</div>
+            <div class="button">2580</div>
+            <div class="button">2580</div>
+            <div class="button">2580</div>
+            <div class="button">2580</div>
+            <div class="button">2580</div>-->
+        </div>
+        
+        <div class="block block_full">
+            <p class="heading">Толщина</p>
+            <div class="button">4</div>
+            <div class="button">6</div>
+            <div class="button disabled">6,5</div>
+            <div class="button">7</div>
+            <div class="button">8</div>
+            <div class="button">9</div>
+            <div class="button">10</div>
+            <div class="button">12</div>
+            <div class="button">15</div>
+            <div class="button">18</div>
+            <div class="button">21</div>
+            <div class="button">24</div>
+            <div class="button">27</div>
+            <div class="button">30</div>
+            
+            <!--<div class="button">30</div>
+            <div class="button">30</div>
+            <div class="button">30</div>-->
+          </div>
+          
+          <div class="block">
+            <p class="heading">Сорта</p>
+            <div class="button active">1</div>
+            <div class="button">2</div>
+            <div class="button">3</div>
+            <div class="button">4</div><br>
+            
+            <div class="button">1</div>
+            <div class="button active">2</div>
+            <div class="button">3</div>
+            <div class="button">4</div>
+        </div>
+        
+         <div class="block quantityBlock" id="quantityBlock">
+            <p class="heading">Количество</p>
+            <div class="quantity">140</div>
+            <p class="buttonComment">нажмите для&nbsp;изменения</p>
+        </div>
+        
+        <div class="block">
+            <p class="heading">Шлифованность</p>
+            <div class="button active">н/ш</div>
+            <div class="button">Ш2</div>
+        </div>
+	</div>
+    
+    <div class="quantityDialogOuter" id="quantityDialogOuter">
+    	<div class="quantityDialog">
+        <p style="margin: 10px;">Количество листов в пачке:</p>
+       	  <div class="quantBig">140
+          	<div class="addBtns incrBtn">+</div>
+            <div class="addBtns decrBtn">-</div>
+          </div>
+            <table>
+              <tbody>
+                <tr>
+                  <td width="33%" align="center">1</td>
+                  <td width="34%" align="center">2</td>
+                  <td width="33%" align="center">3</td>
+                </tr>
+                <tr>
+                  <td align="center">4</td>
+                  <td align="center">5</td>
+                  <td align="center">6</td>
+                </tr>
+                <tr>
+                  <td align="center">7</td>
+                  <td align="center">8</td>
+                  <td align="center">9</td>
+                </tr>
+                <tr>
+                  <td align="center">⬅ стереть</td>
+                  <td align="center">0</td>
+                  <td align="center">ввод</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    	<div class="quantityDialogBg"></div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+html, body { margin: 0; padding: 0; background-color: #ffffff; font-family: PT Sans; font-size: 100%; }
+
+body * { box-sizing: border-box; color: #fcfff4; }
+
+.screen { width: 1280px; height: 1024px; margin: 1em auto; padding: 0 0 10px; border: 1px #000000 solid; overflow: hidden; background-size: cover; background: url(bg.jpg); position: relative; }
+
+.screen .statusBar { width: 100%; background-color: #404055; margin: 0 0 25px 0; height:  50px;
+		-webkit-box-shadow: 0px 3px 3px 0px rgba(80,80,100,1);
+		-moz-box-shadow: 0px 3px 3px 0px rgba(80,80,100,1);
+	box-shadow: 0px 3px 3px 0px rgba(80,80,100,1);
+}
+.screen .statusBar .screenTitle { font-weight: bold; margin: 0 15px; font-size: 20px; }
+.screen .statusBar .time { margin: 0 35px;}
+.screen .statusBar .syncStatus { color: #a0a0a0; }
+.screen .statusBar .syncStatus span { color: #2C9F1B; }
+
+.screen .statusBar .button { margin: 5px 10px; padding: 5px 10px; }
+.button.controlBtn { width: 150px; margin: 0 0 25px 0; font-size: 1.2em; padding: 18px 0; height: auto; }
+.button.btnToStart { color: #E83E41;
+		-webkit-box-shadow: inset 0px 5px 7px 0px rgba(232, 62, 65, 0.6);
+		-moz-box-shadow:    inset 0px 5px 7px 0px rgba(232, 62, 65, 0.6);
+	box-shadow:         inset 0px 5px 7px 0px rgba(232, 62, 65, 0.6);
+}
+.button.btnToStart:hover { background-color: #FFC7C8; }
+.button.btnFlush { color: #d9a408;
+		-webkit-box-shadow: inset 0px 5px 7px 0px rgba(217, 164, 8, 0.6);
+		-moz-box-shadow:    inset 0px 5px 7px 0px rgba(217, 164, 8, 0.6);
+	box-shadow:         inset 0px 5px 7px 0px rgba(217, 164, 8, 0.6);
+}
+.button.btnFlush:hover { background-color: #FAEBAF; }
+.button.btnNext { background-color: #ffffff; color: #303030; border-color: #ffffff; }
+.button.btnNext:hover { background-color: #acacac; }
+
+.screen .area { display: inline-block; box-sizing: border-box; vertical-align: top; margin: 0 15px; }
+.params { width: 1250px; }
+.navi { width: 19%; text-align: center; }
+.block { border: 2px #404040 solid; padding: 10px 20px; display: inline-block; margin: 0 10px 10px 0; vertical-align: top; background-color: #202020;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0px -1px 1px 3px rgba(0,0,0,0.7);
+-moz-box-shadow: inset 0px -1px 1px 3px rgba(0,0,0,0.7);
+box-shadow: inset 0px -1px 1px 3px rgba(0,0,0,0.7);
+}
+.block_full { width: 100%; }
+.block_error {
+		-webkit-box-shadow: inset 0px -1px 5px 5px #FF8060);
+		-moz-box-shadow: inset 0px -1px 5px 5px #FF8060;
+	box-shadow: inset 0px -1px 5px 5px #FF8060;
+}
+.block .heading { margin: 0 0 15px 0; color: #B0B0B0; }
+
+.button { width: 100px; height: 40px; display: inline-block; text-align: center; border: 1px solid; border-collapse: collapse; margin: 0 10px 20px 0; padding: 5px 0 0 0; font-size: 1.35em;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: -moz-linear-gradient(top,  rgba(76,76,76,0.2) 0%, rgba(100,100,100,0.3) 65%, rgba(102,102,102,0.35) 71%, rgba(89,89,89,0.37) 73%, rgba(69,69,69,0.4) 77%, rgba(44,44,44,0.33) 82%, rgba(0,0,0,0.22) 91%, rgba(19,19,19,0.1) 100%);
+
+background: -webkit-linear-gradient(top,  rgba(76,76,76,0.2) 0%,rgba(100,100,100,0.3) 65%,rgba(102,102,102,0.35) 71%,rgba(89,89,89,0.37) 73%,rgba(69,69,69,0.4) 77%,rgba(44,44,44,0.33) 82%,rgba(0,0,0,0.22) 91%,rgba(19,19,19,0.1) 100%);
+
+background: linear-gradient(to bottom,  rgba(76,76,76,0.2) 0%,rgba(100,100,100,0.3) 65%,rgba(102,102,102,0.35) 71%,rgba(89,89,89,0.37) 73%,rgba(69,69,69,0.4) 77%,rgba(44,44,44,0.33) 82%,rgba(0,0,0,0.22) 91%,rgba(19,19,19,0.1) 100%);
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#334c4c4c', endColorstr='#1a131313',GradientType=0 );
+
+
+}
+.button.active { color: #02C236; background-color: #051505;
+		-webkit-box-shadow: inset 0px 3px 7px 0px rgba(79, 160, 54, 0.6);
+		-moz-box-shadow:    inset 0px 3px 7px 0px rgba(79, 160, 54, 0.6);
+	box-shadow:         inset 0px 3px 7px 0px rgba(79, 160, 54, 0.6);
+}
+.button:hover { background-color: #A0F0A0; }
+.button.disabled { color: #656565; background-color: #151515;
+		-webkit-box-shadow: inset 0px 3px 7px 0px rgba(79, 79, 79, 0.6);
+		-moz-box-shadow:    inset 0px 3px 7px 0px rgba(79, 79, 79, 0.6);
+	box-shadow:         inset 0px 3px 7px 0px rgba(79, 79, 79, 0.6);
+}
+
+.quantityBlock { width: 180px; height: 175px; }
+.quantity { font-size: 2.5em; text-align: center; border: 1px #fcfff4 solid; cursor: pointer;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+.buttonComment { text-align: center; margin: 10px 0 0; font-size: .8em; line-height: 1em; color: #707070; font-style: italic; }
+
+.quantityDialogOuter { top: 0; right: 0; bottom: 0; left: 0; position: absolute; display: none; }
+.quantityDialog { position: absolute; top: 300px; left:400px; height: 410px; width: 400px; background: #BEB4B4; z-index: 10; background: #101010; border: 1px #fcfff4 solid;
+ 		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+.quantityDialogBg { top: 0; right: 0; bottom: 0; left: 0; position: absolute; z-index: 1; background: #000000; opacity: .8; }
+.quantityDialog .quantBig { text-align: center; width: 100%; font-size: 100px; margin: 20px 0; position: relative; }
+.quantityDialog table { width: 95%; text-align: center; margin: 0 auto; border-spacing: 5px; }
+.quantityDialog table td { padding: 10px 15px; box-sizing: border-box; text-align: center; border: 1px solid; font-size: 18px; }
+.quantityDialog table td.enterQuant { background-color: #03B400; }
+
+.quantityDialog .addBtns { padding: 17px 18px; width: 60px; text-align: center; border: 1px solid; position: absolute; font-size: 18px; }
+.quantityDialog .incrBtn { top: 0; right: 15px; }
+.quantityDialog .decrBtn { bottom: 0; right: 15px; }
+
+
+.tasksScreen .block { margin: auto; display: block; width: 1150px; }
+.tasksScreen h1 { font-size: 20px; font-weight: normal; }
+.tasksScreen .tasks { width: 1100px; margin: 0 auto; border: 0; border-spacing: 0; font-size: 16px; border-bottom: 3px #ffffff solid; border-top: 3px #ffffff solid; }
+.tasksScreen .tasks td { padding: 7px 2px; }
+.tasksScreen .tasks tr:nth-child(even) td { background-color: #505050; }
+.tasksScreen .tasks tr.shift td { background-color: #505080; padding: 12px 10px 7px; font-weight: bold; }
+
+.tasksScreen .tabs { width: 300px; margin: 1em auto; color: #ffffff; box-sizing: border-box; }
+.tasksScreen .tabs ul { padding: 0; }
+.tasksScreen .tabs ul li { list-style: none; width: 149px; border: 1px #ffffff solid; display: inline-block; padding: 10px 0; text-align: center; margin: 0; }
+.tasksScreen .tabs ul li.active { background-color: #cacaca; color: #303030; }

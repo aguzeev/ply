@@ -14,7 +14,7 @@ var GETvalues = new Array();
 for(i in parametr) { var j=parametr[i].split("="); GETvalues[j[0]]=unescape(j[1]); }
 act = GETvalues['act'];
 
-move3to2date = new Date(2014, 9, 1, 8, 0, 0); // 01 November 2014, 08:00 — moving from 3-shifts day to 2-shifts
+move3to2date = new Date(2014, 9, 1, 8, 0, 0); // 01 November 2014, 08:00 — moving from 3-shifts day to 2-shifts (смены)
 
 $(document).ready(function() {
 	//$("#billNavigation a[href*=" + act + "]").css("background-image", "url(img/menu-bg-hover.png)");
@@ -88,10 +88,12 @@ function showError(text, source) {
 	})
 }
 function myAlert(text, alertType) {
-	if ( typeof(alertType) == 'undefined' ) alertType = 'notice';
-	$.pnotify({
+	typeof(alertType) == 'undefined' ? alertType = 'notice' : false;
+	alertType == 'success' ? addclass = 'myAlertSuccess' : addclass = false;
+	var pnotify = $.pnotify({
 		text: text,
-		type: alertType
+		type: alertType,
+		addclass: addclass
 	});
 }
 

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>POST test</title>
+<script language="javascript" src="jquery.min.js"></script>
+<script language="javascript">
+id = 1;
+
+function send_POST() {
+	var packs = Array();
+	var pack = 
+	{
+		"id": 10,
+		"timestamp":"2016-02-01 15:01",
+		"operator": 15,
+		"grade": 1,
+		"type": "F",
+		"length": 1220,
+		"width": 2440,
+		"thickness": 150,
+		"sort_1": 1,
+		"sort_2": 2,
+		"sanding": 2,
+		"quantity": 35,
+		"volume": 1234567,
+		"comment": "Комментариииий оператора"
+	};
+	
+	packsCount = $("#count").val();
+	for ( i = 0; i < packsCount; i++ ) {
+		id++;
+		pack.id = id;
+		
+		packs.push( clone(pack) );
+	}
+	console.log(packs);
+	
+	$.ajax({
+		url: "../index.php",
+		data: { packs: packs },
+		contentType: "application/json",
+		type: "POST"
+	}).done(function(data) {
+		$("#out").html( data );
+	});
+}
+
+function send_GET() {
+	$.ajax({
+		url: "../index.php",
+		type: "GET",
+		dataType: "JSON"
+	}).done(function(data) {
+		if ( typeof(data.last_pack) != "undefined" ) id = parseInt( data.last_pack.id );
+		$("#out").html( JSON.stringify(data) );
+	});
+}
+
+function clone(obj) {
+	// important article ! http://stackoverflow.com/questions/728360/most-elegant-way-to-clone-a-javascript-object
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
+}
+</script>
+</head>
+
+<body>
+
+<input type="button" value="Send GET" onClick="javascript:send_GET();"> Получить номер последней добавленной пачки<br>
+<input type="button" value="Send POST" onClick="javascript:send_POST();"> Отправить несколько пачек: 
+<select id="count">
+	<option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+<div id="out" style="border: 1px #cacaca solid;"></div>
+
+</body>
+</html>
